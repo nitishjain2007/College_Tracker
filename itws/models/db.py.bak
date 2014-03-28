@@ -82,7 +82,7 @@ use_janrain(auth, filename='private/janrain.key')
 
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
-db.define_table("persons",Field("name","string"),Field("password","password"),Field("designation","string"),Field("sex","string"),Field("photo","upload",default='path/'))
+db.define_table("persons",Field("name","string"),Field("password","password"),Field("designation","string"),Field("sex","string"),Field("photo","upload"))
 db.define_table("ug2k13",Field("name","string"),Field("roll_no","integer"),Field("sec","string"))
 db.define_table("ug2k12",Field("name","string"),Field("roll_no","integer"),Field("sec","string"))
 db.define_table("periods",Field("pname","string"),Field("T1","time"),Field("T2","time"))
@@ -92,6 +92,6 @@ db.define_table("ug2k12_A",Field("dayn","string"),Field("period1","string"),Fiel
 db.define_table("ug2k12_B",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
 
 db.define_table('image',
-   Field('username', unique=True),
+   Field('username', readable=False, unique=True),
    Field('img', 'upload',requires=IS_EMPTY_OR(IS_IMAGE(extensions=('jpeg', 'jpg', 'png', 'gif')))),
    format='%(username)s')

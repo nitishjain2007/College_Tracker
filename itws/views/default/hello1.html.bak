@@ -1,3 +1,4 @@
+
 {{extend 'layout.html'}}
 <style>
 #imagediv{
@@ -103,7 +104,6 @@ border-radius: 20px;
 <input type="file" name="photochange" size="40">
 <button name="change" type="submit" value="change">Submit</button>
 </form>
-{{=uploadform}}
 </td>
 </tr>
 </table>

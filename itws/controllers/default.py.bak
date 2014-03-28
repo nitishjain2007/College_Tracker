@@ -39,8 +39,7 @@ def hello1():
 	print session.uname
 	session.newpic = request.vars["change"]
 	session.newpicls = request.vars["photochange"]
-	stream = open(session.newpicls, 'rb')
-	db(db.persons.name == session.uname).update(photo=db.persons.image.store(stream, session.newpicls))
+	db(db.persons.name == session.uname).update(photo=session.newpicls)
 	print session.newpic
     if session.state=="logout":
 	session.state="login"
