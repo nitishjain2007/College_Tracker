@@ -10,6 +10,10 @@
 #########################################################################
 from datetime import datetime,date
 import time
+def download():
+	return response.download(request,db)
+def link():
+	return response.download(request,db,attachment=False)
 def faq():
     if session.login!="login":
         session.login="login1"
@@ -30,18 +34,14 @@ def validater():
 		    if(i.password==session.passwo):
 			    session.states="ok"
 def hello1():
-    uploadform = SQLFORM(db.image)
-    if uploadform.process().accepted:
-        response.flash = 'Image got Uploaded'
-    session.newpic = None
-    if request.vars.change:
-	print "wooooooooooooooo"
-	print session.uname
-	session.newpic = request.vars["change"]
-	session.newpicls = request.vars["photochange"]
-	stream = open(session.newpicls, 'rb')
-	db(db.persons.name == session.uname).update(photo=db.persons.image.store(stream, session.newpicls))
-	print session.newpic
+    if session.login == "login1":
+	response.flash = T("login to continue")
+    session.state = "login"
+    image_form = FORM(INPUT(_name='image_file',_type='file'))
+    if image_form.accepts(request.vars,formname='image_form'):
+	image = db.persons.photo.store(image_form.vars.image_file.file,image_form.vars.image_file.filename)
+	id = db(db.persons.name==session.uname).update(photo=image)
+	response.flash = T("Your Profile Pic Changed.Please Logout to see changes")
     if session.state=="logout":
 	session.state="login"
 #for initializing the login state
@@ -60,6 +60,8 @@ def hello1():
 	response.mess="notput"
 	session.login = "login1"
 	session.logout = "true"
+	session.state2 = "logout"
+	redirect(URL("hello1"))
 
 #for logging in
 
@@ -70,6 +72,7 @@ def hello1():
 #for checking the credentials
 	
 	validater()
+
 
 #redirecting user to his page
 
@@ -130,7 +133,7 @@ def hello1():
 	   session.login = "login"
 	else:
 	   response.flash=T("wrong username/password")
-    return dict(check1=session.login,check2=session.uname,check3=session.photo,check4=session.period,check5=session.schedule,check6=session.periodtype,uploadform=uploadform)
+    return dict(check1=session.login,check2=session.uname,check3=session.photo,check4=session.period,check5=session.schedule,check6=session.periodtype)
 def index():
     """
     example action using the internationalization operator T and flash

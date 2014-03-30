@@ -1,5 +1,6 @@
 {{extend 'layout.html'}}
 <style>
+
 #imagediv{
 /*background-image: url({{=URL('default', 'download','args=check3')}})*/
 float: right;
@@ -16,7 +17,18 @@ border-radius: 20px;
         z-index:-1;
 }
 </style>
-
+<script>
+function main(){
+	document.getElementById("search").style.display="none";
+	searchbox.hide();
+//	$('#search').hide();
+}
+function g(){
+//	$('#search').show();
+	document.getElementById("search").style.display="block";
+}
+window.addEventListener('load', main);
+</script>
 <!-- Navbar ================================================== -->
   <div class="navbar navbar-inverse">
     <div class="flash">{{=response.flash or ''}}</div>
@@ -96,14 +108,23 @@ border-radius: 20px;
 <p>You have your {{=check4}} {{=check6}} scheduled at {{=check5}}</p>
 {{pass}}
 </div>
+<div id="search">
+<form name="search" method="post">
+<input type="text">
+</form>
+</div>
+<button onclick="g()">click</button>
 </td>
 <td>
 <div id="imagediv" float="left"><img class="profilepic" src="{{=URL('default', 'download',args=check3)}}" height="500px" width="375px" style="z-index=-1;" -moz-border-radius: 40px 40px;></div>
-<form method="post" name="imageform" value="change">
-<input type="file" name="photochange" size="40">
-<button name="change" type="submit" value="change">Submit</button>
+<p></p>
+<h4>Change your Profile Pic:</h4>
+<form method="post" action="" enctype="multipart/form-data">
+<input type="hidden" name="_formname" value="image_form">
+<input class="upload" name="image_file" type="file">
+<input type="submit" value="Submit">
+
 </form>
-{{=uploadform}}
 </td>
 </tr>
 </table>
