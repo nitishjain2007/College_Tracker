@@ -110,7 +110,17 @@ window.addEventListener('load', main);
 </div>
 <div id="search">
 <form name="search" method="post">
-<input type="text">
+<input type="text" name="place">
+<br>
+<input type="date" id="datepicker1" name="fromdate">
+<br>
+<input type="time" iname="fromtime">
+<br>
+<h6><font color="grey">format 13:00:00</font></h6>
+<br>
+<input type="date" id="datepicker2" name="todate">
+<br>
+<input type="time" name="totime">
 </form>
 </div>
 <button onclick="g()">click</button>
@@ -123,7 +133,6 @@ window.addEventListener('load', main);
 <input type="hidden" name="_formname" value="image_form">
 <input class="upload" name="image_file" type="file">
 <input type="submit" value="Submit">
-
 </form>
 </td>
 </tr>
