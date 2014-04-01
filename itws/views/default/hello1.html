@@ -102,6 +102,11 @@ window.addEventListener('load', main);
 <div float="left" height="700px" width="100px">
 <h1 width="100px">hi {{=check2}}</h1>
 <p width="100px"> welcome to my world<br>hi<br>hi<br></p>
+{{if check7 == None:}}
+<p>No location specified by you</p>
+{{else:}}
+<p>your current location specified is {{=check7}}</p>
+{{pass}}
 {{if check4 == None:}}
 <p>You Have no class</p>
 {{else:}}

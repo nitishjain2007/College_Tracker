@@ -52,8 +52,6 @@ def hello1():
 			response.flash = T("Your changes stored")
 			db.loca.insert(username=session.uname,place=place,fdate=fdate,ftime=ftime,tdate=tdate,ttime=ttime)
 
-#for returning the location specified by the user 
-
 #for changing the profile pic
     image_form = FORM(INPUT(_name='image_file',_type='file'))
     if image_form.accepts(request.vars,formname='image_form'):
@@ -134,6 +132,28 @@ def hello1():
 		else:
 			session.period = None
 
+#for removing the outdated places of all users
+	currdate = time.strftime("%x")
+	currtime = time.strftime("%X")
+	currdate = currdate[0:6]
+	curryear = time.strftime("%Y")
+	currdate = currdate + curryear
+        db(db.loca.tdate < currdate).delete()
+    
+#for retrieving the specified location assigned by user
+	session.location = None
+	places = db(db.loca.username == session.uname).select()
+	for i in places:
+    		if i.fdate < currdate and i.tdate > currdate:
+		    session.location = i.place
+		elif i.fdate == currdate or i.tdate == currdate:
+		    if i.fdate == currdate:
+		        if i.ftime < currtime:
+			    session.location = i.place
+		    else:
+		        if i.ttime > currtime:
+			    session.location = i.place
+
 #flash messages
 
 	if session.states=="ok":
@@ -141,7 +161,7 @@ def hello1():
 	   session.login = "login"
 	else:
 	   response.flash=T("wrong username/password")
-    return dict(check1=session.login,check2=session.uname,check3=session.photo,check4=session.period,check5=session.schedule,check6=session.periodtype)
+    return dict(check1=session.login,check2=session.uname,check3=session.photo,check4=session.period,check5=session.schedule,check6=session.periodtype,check7=session.location)
 def index():
     """
     example action using the internationalization operator T and flash
