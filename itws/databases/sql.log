@@ -1331,3 +1331,182 @@ success!
 success!
 success!
 success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2014-04-01T15:36:06.046023
+ALTER TABLE locations ADD tdate CHAR(512);
+success!
+timestamp: 2014-04-01T15:37:02.252446
+ALTER TABLE locations ADD tdate CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2014-04-01T15:43:02.068082
+CREATE TABLE loca(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    place CHAR(512)
+);
+success!
+success!
+success!
+success!
+timestamp: 2014-04-01T15:45:41.069887
+ALTER TABLE loca ADD tdate CHAR(512);
+timestamp: 2014-04-01T15:45:41.155853
+ALTER TABLE loca ADD fdate CHAR(512);
+timestamp: 2014-04-01T15:45:41.222333
+ALTER TABLE loca ADD ftime CHAR(512);
+timestamp: 2014-04-01T15:45:41.289003
+ALTER TABLE loca ADD ttime CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2014-04-01T17:35:44.420898
+ALTER TABLE loca ADD username CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

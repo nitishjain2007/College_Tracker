@@ -109,19 +109,34 @@ window.addEventListener('load', main);
 {{pass}}
 </div>
 <div id="search">
-<form name="search" method="post">
-<input type="text" name="place">
-<br>
-<input type="date" id="datepicker1" name="fromdate">
-<br>
-<input type="time" iname="fromtime">
-<br>
-<h6><font color="grey">format 13:00:00</font></h6>
-<br>
-<input type="date" id="datepicker2" name="todate">
-<br>
-<input type="time" name="totime">
+<table>
+<form id="update" name="update" method="post">
+<tr>
+<td>Place</td>
+<td><input type="text" name="place"></td>
+</tr>
+<tr>
+<td>from date</td>
+<td><input type="text" id="datepicker1" name="fromdate"></td>
+</tr>
+<tr>
+<td>from time</td>
+<td><input type="text" name="fromtime">
+<font size="1" color="grey">format 13:00:00</font></td>
+</tr>
+<tr>
+<td>to date</td>
+<td><input type="text" id="datepicker2" name="todate"></td>
+</tr>
+<tr>
+<td>to time</td>
+<td><input type="text" name="totime">
+<font size="1" color="grey">format 13:00:00</font></td>
+</tr>
+<tr>
+<td><button name="update" type="submit" value="Update">Update</button></td>
 </form>
+</table>
 </div>
 <button onclick="g()">click</button>
 </td>

@@ -37,24 +37,6 @@ def hello1():
     if session.login == "login1":
 	response.flash = T("login to continue")
     session.state = "login"
-
-#for changing the location of any date specified by user
-    if request.vars.update:
-	place = request.vars["place"]
-	fdate = request.vars["fromdate"]
-	ftime = request.vars["fromtime"]
-	tdate = request.vars["todate"]
-	ttime = request.vars["totime"]
-	if place=="" or fdate=="" or ftime=="" or tdate=="" or ttime=="":
-		response.flash = T("Fill in the details correctly")
-	else:
-		if place is not None:
-			response.flash = T("Your changes stored")
-			db.loca.insert(username=session.uname,place=place,fdate=fdate,ftime=ftime,tdate=tdate,ttime=ttime)
-
-#for returning the location specified by the user 
-
-#for changing the profile pic
     image_form = FORM(INPUT(_name='image_file',_type='file'))
     if image_form.accepts(request.vars,formname='image_form'):
 	image = db.persons.photo.store(image_form.vars.image_file.file,image_form.vars.image_file.filename)
@@ -120,6 +102,8 @@ def hello1():
 			session.periodtype = "class"
 		if session.periodname is not None:
 			session.var = rows2[0][session.periodname]
+			print session.var
+			print type(session.var)
 			if session.var is not "-":
 				session.var = session.var.split()
 				session.period = session.var[0]
@@ -133,6 +117,23 @@ def hello1():
 					
 		else:
 			session.period = None
+#for changing the location of any date specified by user
+	if request.vars.update:
+		print "hello"
+		place = request.vars["place"]
+		fdate = request.vars["fromdate"]
+		ftime = request.vars["fromtime"]
+		tdate = request.vars["todate"]
+		ttime = request.vars["totime"]
+		if place=="" or fdate=="" or ftime=="" or tdate=="" or ttime=="":
+			flash.message = T("Fill in the details correctly")
+#changing the profile pic
+	session.newpic == request.get_vars["change"]
+	if session.newpic == "change":
+		print "wooooooooooooooooooo"
+		session.newpic = request.get_vars["photochange"]
+		db(db.persons.name == session.uname).update(photo=session.newpic)
+		response.flash = t("Image Changed")
 
 #flash messages
 
