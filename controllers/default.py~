@@ -56,7 +56,7 @@ def hello1():
 			db.loca.insert(username=session.uname,place=place,fdate=fdate,ftime=ftime,tdate=tdate,ttime=ttime)
 			response.flash = T("Your input has been successfully recorded")
 #for sending new messages
-    if request.vars.update:
+    if request.vars.send:
 
 	receiver = request.vars["to"]
 	message = request.vars["message"]

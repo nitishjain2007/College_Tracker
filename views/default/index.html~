@@ -7,7 +7,7 @@
  <ul id="bar">
     <li><a id="listitem" href="index">Home</a></li>
     <li><a id="listitem" href="http://www.iiit.ac.in">IIIT HYDERABAD</a></li>
-    <li><a id="listitem" href="http://localhost:8000/itws/default/index">FAQs</a></li>
+    <li><a id="listitem" href="#">FAQs</a></li>
     <li><a id="listitem" href="#">Contacts</a></li>
     {{if check1=="login1":}}
     <li style="float: right;" name="loginbutton"><a id="listitem" href="hello1">Login</a></li>

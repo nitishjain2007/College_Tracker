@@ -187,7 +187,9 @@ def hello1():
 ,check6=session.periodtype,check7=session.location,check8 = session.messages)
 
 
-
+def hs():
+    #response.flash = T("Feel free to contact us!")
+    return dict(message=T('Feel free to contact us!'),check1=session.login,check2=session.uname)
 
 
 def index():
