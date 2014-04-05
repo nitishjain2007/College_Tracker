@@ -189,7 +189,7 @@ def hello1():
 
 def hs():
     #response.flash = T("Feel free to contact us!")
-    return dict(message=T('Feel free to contact us!'),check1=session.login,check2=session.uname)
+    return dict(message=T('Feel free to contact us!'),check1=session.login,check2=session.uname,check3=session.photo)
 
 
 def index():

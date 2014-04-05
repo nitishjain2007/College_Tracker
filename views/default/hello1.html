@@ -15,6 +15,7 @@ border-radius: 20px;
 
 .profilepic{
         z-index:-1;
+}
    #backgroundPopup {
       z-index:1;
       position: fixed;
@@ -93,7 +94,6 @@ border-radius: 20px;
       height:200px
       */
   }
-}
 </style>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"> </script>
   <script type="text/javascript" src="js/script.js"></script>
@@ -242,13 +242,7 @@ window.addEventListener('load', main);
 <div float="left" height="700px" width="100px">
 <h1 width="100px">hi {{=check2}}</h1>
 <p width="100px"> welcome to my world<br/>hi<br></p>
-<a href="#" class="topopup">Send E-mail</a>
-   
-      <div id="toPopup">
-   
-          <div class="close"></div>
-          <span class="ecs_tooltip">Close <span class="arrow"></span></span>
-          <div id="popup_content"> <!--your content start-->
+
 <div id="messagetickr" style="width:400px;height:220px;background-color:yellow;border-radius:15px;margin-left:13%;">
 <h1 style="margin-left:13%">MESSAGE TICKR</h1>
 {{if len(check8) == 0:}}
@@ -258,19 +252,6 @@ window.addEventListener('load', main);
 <p>{{=i}}</p>
 {{pass}}
 {{pass}}</div><br/><br/>
-
-<div id="messagin" style="width:400px;height:220px;background-color:orange;border-radius:15px;margin-left:13%;">
-<h3 style="margin-left:15%">SEND A NEW MESSAGE</h3>
-<form id="newmess" name="newmess" method="post">
-<table style="border=0">
-<tr><td>FROM</td><td><input type="text" name="from"></td>
-<tr><td>TO</td><td><input type="text" name="to"></td>
-<tr><td>Message:</td><td><input type="text" name="message"></td>
-<tr><td colspan="2"><button name="send" type="submit" value="Message" style="margin-left:45%">Send</button></td>
-</table>
-<form>
-</div>
-
 
 {{if check7 == None:}}
 <p>No location specified by you</p>
@@ -282,13 +263,33 @@ window.addEventListener('load', main);
 {{else:}}
 <p>You have your {{=check4}} {{=check6}} scheduled at {{=check5}}</p>
 {{pass}}
+<a href="#" class="topopup">SEND A NEW MESSAGE</a></br></br>
+   
+      <div id="toPopup" style="width:500px;height:250px;background-color:orange;border-radius:15px;">
+   
+          <div class="close"></div>
+          <span class="ecs_tooltip">Close <span class="arrow"></span></span>
+          <div id="popup_content" > <!--your content start-->
+
+<div id="messagin" >
+<h3 style="margin-left:15%">NEW MESSAGE</h3>
+<form id="newmess" name="newmess" method="post">
+<table style="border=0">
+<tr><td>FROM</td><td><input type="text" name="from"></td>
+<tr><td>TO</td><td><input type="text" name="to"></td>
+<tr><td>Message:</td><td><input type="text" name="message"></td>
+<tr><td colspan="2"><button name="send" type="submit" value="Message" style="margin-left:45%">Send</button></td>
+</table>
+<form>
 </div>
+
+
+
  </div> <!--your content end-->
    
       </div> <!--toPopup end-->
  
-      <div class="loader"></div>
-      <div id="backgroundPopup"></div>
+      
 <div id="search">
 <table>
 <form id="update" name="update" method="post">
@@ -334,5 +335,7 @@ window.addEventListener('load', main);
 </tr>
 </table>
 </div>
+<div class="loader"></div>
+      <div id="backgroundPopup"></div>
 {{pass}}
 {{end}}
