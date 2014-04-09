@@ -82,13 +82,15 @@ use_janrain(auth, filename='private/janrain.key')
 
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
-db.define_table("persons",Field("name","string"),Field("password","password"),Field("designation","string"),Field("sex","string"),Field("photo","upload"))
+db.define_table("persons",Field("username","string"),Field("name","string"),Field("password","password"),Field("designation","string"),Field("sex","string"),Field("photo","upload"))
 db.define_table("ug2k13",Field("name","string"),Field("roll_no","integer"),Field("sec","string"))
 db.define_table("ug2k12",Field("name","string"),Field("roll_no","integer"),Field("sec","string"))
+db.define_table("professor",Field("name","string"),Field("pid","string"))
 db.define_table("periods",Field("pname","string"),Field("T1","time"),Field("T2","time"))
 db.define_table("ug2k13_A",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
 db.define_table("ug2k13_B",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
 db.define_table("ug2k12_A",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
 db.define_table("ug2k12_B",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
+db.define_table("gary_1",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
+db.define_table("ronn_1",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
 db.define_table("loca",Field("username","string"),Field("place","string"),Field("fdate","string"),Field("ftime","string"),Field("tdate","string"),Field("ttime","string"))
-

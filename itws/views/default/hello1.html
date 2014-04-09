@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 <style>
-
+div.inline { display:inline; }
 #imagediv{
 /*background-image: url({{=URL('default', 'download','args=check3')}})*/
 float: right;
@@ -20,12 +20,55 @@ border-radius: 20px;
 <script>
 function main(){
 	document.getElementById("search").style.display="none";
+	document.getElementById("getusername").style.display="none";
 	searchbox.hide();
 //	$('#search').hide();
 }
 function g(){
 //	$('#search').show();
 	document.getElementById("search").style.display="block";
+}
+function flash()
+{
+//	alert("hi");
+	ans = document.getElementById("getname").value ;
+	if(ans == "") {
+		document.getElementById("options").innerHTML = "";
+		return;
+	}
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			/*d = eval("(" + xmlhttp.responseText + ")");*/
+			document.getElementById("options").innerHTML=xmlhttp.responseText;/*"<div >" + d["final"][0] + "</div>" + "<div>" + d["final"][1] + "</div>";*/
+
+		}
+	}
+	xmlhttp.open("GET","names?start=" + ans ,true);
+	xmlhttp.send();
+}
+function f(i){
+	ans = document.getElementById(i);
+	ans2 = ans.innerHTML;
+	ans3 = ans2 + "u";
+	ans4 = document.getElementById(ans3);
+	ans5 = ans4.innerHTML;
+	e = document.getElementById("getusername");
+	e.value = ans5;
+	d = document.getElementById("getname");
+	d.value = ans2;
+	document.getElementById("options").innerHTML = "";
+	l(i);
 }
 window.addEventListener('load', main);
 </script>
@@ -144,6 +187,21 @@ window.addEventListener('load', main);
 </table>
 </div>
 <button onclick="g()">click</button>
+<h4>Searching for someone?:</h4>
+<div id="searching">
+<table>
+<form id="search" name="search" method="post">
+<tr>
+<td>type in name for whom you are looking for</td>
+<td><input type="text" id="getname" name="getname" onkeyup = "flash()"></td>
+</tr>
+<tr><td><input type="text" id="getusername" name="getusername" ></td></tr>
+<tr><td><button type="submit" name="search" value="search">Search</button></td></tr>
+</table>
+</form>
+<h3>Your Suggestions</h3>
+<div id="options">
+</div>
 </td>
 <td>
 <div id="imagediv" float="left"><img class="profilepic" src="{{=URL('default', 'download',args=check3)}}" height="500px" width="375px" style="z-index=-1;" -moz-border-radius: 40px 40px;></div>
