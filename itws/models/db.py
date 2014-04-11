@@ -94,3 +94,4 @@ db.define_table("ug2k12_B",Field("dayn","string"),Field("period1","string"),Fiel
 db.define_table("gary_1",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
 db.define_table("ronn_1",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))
 db.define_table("loca",Field("username","string"),Field("place","string"),Field("fdate","string"),Field("ftime","string"),Field("tdate","string"),Field("ttime","string"))
+db.define_table("messages",Field("Sender","string"),Field("Receiver","string"),Field("info","string"))

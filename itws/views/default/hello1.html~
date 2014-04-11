@@ -186,8 +186,6 @@ window.addEventListener('load', main);
 </form>
 </table>
 </div>
-<div id="messagetickr" style="width:400px;height:220px;background-color:yellow;border-radius:15px;margin-left:13%;">
-<h1 style="margin-left:13%">MESSAGE TICKR</h1>
 {{if len(check8) == 0:}}
 <p>You got no messages</p>
 {{else:}}

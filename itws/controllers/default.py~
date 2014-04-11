@@ -98,7 +98,7 @@ def search():
 	else:
 		if(message != None):
 			db.messages.insert(Sender = session.uname,Receiver = session.queryname,info =message)
-    			response.flash = T("Your message was successfully sent")
+    
     for i in places:
         if i.fdate < currdate and i.tdate > currdate:
 	    location = i.place
