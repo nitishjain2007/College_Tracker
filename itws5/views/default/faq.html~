@@ -1,0 +1,125 @@
+{{extend 'layout.html'}}
+<style>
+#imagediv{
+/*background-image: url({{=URL('default', 'download','args=check3')}})*/
+float: right;
+width: 375px;
+height: 500px;
+border: 8px solid #666;
+border-radius: 20px;
+
+
+
+}
+
+.profilepic{
+        z-index:-1;
+}
+#appname
+{
+	width:100%;
+	height:60%;
+	padding:20px 0 0 40px;
+	color:white;
+	letter-spacing:2px;
+	font-size:35px;
+	font-weight:bold;
+}
+#buts
+{
+	width:100%;
+	height:40%;
+	padding:0 0 0 40px;
+}
+</style>
+
+<!-- Navbar ================================================== -->
+  <div class="navbar navbar-inverse">
+    <div class="flash">{{=response.flash or ''}}</div>
+  </div><!--/top navbar -->
+<div id="nav">
+	<div id="ntop">
+	<p id="appname">iiit tracker</p>
+	</div>
+	<div id="buts">
+	<ul id="bar">
+		<li><a id="listitem" href="index">Home</a></li>
+		<li><a id="listitem" href="http://www.iiit.ac.in">IIIT HYDERABAD</a></li>
+		<li><a id="listitem" href="faq">FAQs</a></li>
+		<li><a id="listitem" href="hs">Help & Support</a></li>
+		{{if check1=="login1":}}
+		<li style="margin-left:52%;" name="loginbutton"><a id="listitem" href="hello1">Login</a></li>
+		{{pass}}
+		{{if check1=="login":}}
+		<li style="margin:1% 0 0 38%;font-weight:bold;color:#fff;border:none;background-color:#282828;">Hi {{=check2}}</li>
+		<li style="border:none;background-color:#282828;"><a href="hello1"><div height="35px" width="35px" border-radius="2px"><img src="{{=URL('default', 'download',args=check3)}}" height="35px" width="35px"></a></div></li>
+		<li style="margin-left:2%;" name="logoutbutton"><a id="listitem" href="hello1?a=logout">Logout</a></li>
+		
+		{{pass}}
+		</ul>
+	</div>
+    </div>
+  <div class="container">
+    <!-- Masthead ================================================== -->
+    
+
+    <section id="main" class="main row">
+        {{if left_sidebar_enabled:}}
+        <div class="span3 left-sidebar">
+            {{block left_sidebar}}
+            <h3>Left Sidebar</h3>
+            <p></p>
+            {{end}}
+        </div>
+        {{pass}}
+	<div class="{{=middle_columns}}">
+            {{block center}}
+
+<p>
+<h1>FAQs</h1>
+</br></br>
+The new version of IIIT Tracker is here!  Come take a look and let us know what you think; we hope the faster, cleaner site will appeal.  We will be rolling out new features over the next couple of weeks, with highlights including a mobile version, enhanced searching and a marketplace for industry partners. Please email us your thoughts at help@IIITtracker.com.
+</br></br>
+1. Why the new site?
+</br></br>
+Since IIIT Tracker began in 2005, we have added tenfold the number of auditions plus countless features, including the application service, calendaring, accompanist tools, audition swapping and more. As each feature was added, the site became slower and the navigation more cumbersome and confusing. There simply was not an option to stay in the previous system, and the requirement for change became more urgent with the coming application season.
+</br></br>
+2. What are some of the highlights of the new site?
+</br></br>
+The first thing you may notice already is the greatly improved speed of the site overall.  We hope you’ll find it much faster.
+</br>
+We have changed the tab structure to allow you more specificity in your site navigation: want to see all masterclasses and competitions at the same time? Just click the corresponding checkboxes - no need to search through multiple tabs.  
+</br>
+The new filters on the left hand side of the Opportunities page are also a great new feature: you can filter by multiple locations at once, age limit and multiple program types simultaneously or separately.
+</br>
+As new features were added to the old site overtime, the navigation became more and more cumbersome: the list of links to new features in the right hand side bar grew ever longer, and it was difficult to find everything the site had to offer. The new navigation is much more streamlined; all of the same great features remain, and we hope you with find the structure more intuitive.
+</br>
+We’ll soon be rolling out a mobile version of the site, a marketplace for industry partners and more. Keep an eye out for the great new features the new platform will allow us to offer.
+</br></br>
+3. I don’t like it. Can you change it back?
+</br></br>
+We recognize that the change is not for everyone, but this wasn't an aesthetic choice: our old system could not handle the load of users, listings and applications, much less many of the great new features that our members have requested. We do hope that the benefits the new site will offer will outweigh any concerns.
+</br></br>
+4. My favorite feature is gone; what happened to it?
+</br></br>
+A few of the features that the old site offered have not yet been transferred to the new site. This includes accompanist tools features, some calendaring functions, currency conversions on the expenses page and a few others.  In our effort to avoid any downtime while the site was being migrated, we have had to temporarily table these features. We assure you that they will be returning as soon as possible.
+</br></br>
+5. The links in my old alerts aren’t working.
+</br></br>
+Alerts created before August 21 contain a different naming convention for listings than the new system, so for the moment, you will not be able to use previously published alerts to view your links of interest. We will be indexing those links in the next few days and forwarding them to their corresponding link in the new system.  Your personal preferences and tracking were automatically carried over to the new system, and any forthcoming alerts will contain the updated links.
+</br></br>
+6. Why weren’t members notified beforehand?
+</br></br>
+We have been working on a new version of the site for several months now, but the date for release was not firm. A server issue necessitated the sudden update, and a further upgrade will be required over labor day weekend; we will try to keep any down time to the absolute minimum and will post a note on the site beforehand.  We had a choice to take the site down for a few days to prepare documentation or bring it back up while we continue to work through the migration. It was our sense that our members would prefer no down time, so unfortunately, we simply did not have time to prepare our members with tools to ease their way in.  We will work on documentation in the coming weeks, and we thank you for your understanding.
+</br></br>
+7. I’m having trouble logging in.
+</br></br>
+Some of our users who visit the site through Internet Explorer have reported login issues.  We are working on the problem and hope to have the site functioning smoothly on all supported browsers as soon as possible. In the interim, if you have access to Firefox, we recommend accessing the site temporarily through this browser.  Please contact us at help@IIITtracker.com and describe any problems you are having so that we can troubleshoot.
+</br>
+We thank you for your continued understanding while we work through any challenges that arise.  While it is our hope that your experience on the site will be much improved by the changes, please don’t hesitate to contact us if you have any concerns. If you have a technical issue, emailing us any error messages or information on the steps taken prior to encountering the issue are most helpful.  Please also share your operating system and browser information if you need technical support.
+</br>
+Thank you again for your continued support of the site!
+</br>
+IIIT Tracker Team
+</br>
+</p>

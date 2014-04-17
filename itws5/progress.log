@@ -1,0 +1,13 @@
+[2014-03-18 14:43:21] START
+[2014-03-28 23:13:34] EDIT itws/models/db.py: 4
+[2014-03-28 23:13:40] EDIT itws/models/db.py: 0
+[2014-03-28 23:15:08] EDIT itws/controllers/default.py: 4
+[2014-03-28 23:15:22] EDIT itws/controllers/default.py: 0
+[2014-03-28 23:15:56] EDIT itws/controllers/default.py: -1
+[2014-03-28 23:15:59] EDIT itws/controllers/default.py: 0
+[2014-03-28 23:15:59] EDIT itws/controllers/default.py: 0
+[2014-03-28 23:15:59] EDIT itws/controllers/default.py: 0
+[2014-03-28 23:16:30] EDIT itws/views/default/hello1.html: 1
+[2014-03-28 23:17:47] EDIT itws/models/db.py: 0
+[2014-03-28 23:17:49] EDIT itws/models/db.py: 0
+[2014-03-28 23:18:26] EDIT itws/models/db.py: 0

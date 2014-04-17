@@ -1,0 +1,97 @@
+{{extend 'layout.html'}}
+<style>
+.pad
+{
+	padding:15px;
+}
+#appname
+{
+	width:100%;
+	height:60%;
+	padding:20px 0 0 40px;
+	color:white;
+	letter-spacing:2px;
+	font-size:35px;
+	font-weight:bold;
+}
+#buts
+{
+	width:100%;
+	height:40%;
+	padding-left:30px;
+}
+</style>
+  <div class="navbar navbar-inverse">
+    <div class="flash">{{=response.flash or ''}}</div>
+  </div><!--/top navbar -->
+<div id="nav">
+	<div id="ntop" style="width:100%;">
+	<p id="appname">iiit tracker</p>
+	</div>
+	<div id="buts">
+	<ul id="bar">
+		<li><a id="listitem" href="index">Home</a></li>
+		<li><a id="listitem" href="http://www.iiit.ac.in">IIIT HYDERABAD</a></li>
+		<li><a id="listitem" href="faq">FAQs</a></li>
+		<li><a id="listitem" href="hs">Help & Support</a></li>
+		{{if check1=="login1":}}
+		<li style="margin-left:52%;" name="loginbutton"><a id="listitem" href="hello1">Login</a></li>
+		{{pass}}
+		{{if check1=="login":}}
+		<li style="margin:1% 0 0 38%;font-weight:bold;color:#fff;border:none;background-color:#282828;">Hi {{=check2}}</li>
+		<li style="border:none;background-color:#282828;"><a href="hello1"><div height="35px" width="35px" border-radius="2px"><img src="{{=URL('default', 'download',args=check3)}}" height="35px" width="35px"></a></div></li>
+		<li style="margin-left:2%;" name="logoutbutton"><a id="listitem" href="hello1?a=logout">Logout</a></li>
+		
+		{{pass}}
+		</ul>
+	</div>
+    </div>
+<h3 style="margin-left:500px;">{{=message}}</h3>
+<div id="contact_page" align="center" style="width:800px;height:200px;background-color:#AFEEEE;border-radius:15px;margin-left:250px;">
+	<table style="border:none; ">
+		<tr>
+			<th class="pad">Name</th>
+			<th class="pad">Contact No.</th>
+			<th class="pad">E-mail</th>
+		</tr>
+		<tr>
+			<td class="pad">Manu Jain</td>
+			<td class="pad">9868094188</td>
+			<td class="pad">manu.jain@students.iiit.ac.in</td>
+		</tr>
+		<tr>
+			<td class="pad">Karan Mangla</td>
+			<td class="pad">9581243002</td>
+			<td class="pad">karan.mangla@students.iiit.ac.in</td>
+		</tr>
+		<tr>
+			<td class="pad">Nitish Jain</td>
+			<td class="pad">9052053970</td>
+			<td class="pad">nitish.jain@students.iiit.ac.in</td>
+		</tr>
+	</table>
+</div></br></br>
+	<h3 align="center">For more details, please fill the form below:</h3>
+<div align="center" style="width:800px;height:450px;background-color:#99FF66;border-radius:15px;margin-left:250px;">
+	<form name="forsub" method="post">
+		<table style="border:none;">
+		{{if check1=="login":}}
+		<tr><td>Name:</td><td><input type="text" name="name" value=	{{=check2}}></td></tr>
+		{{pass}}
+		{{if check1=="login1":}}
+		<tr><td>Name:</td><td><input type="text" name="name" ></td></tr>
+		{{pass}}
+		</br>
+		<tr><td>Contact No.:</td><td><input type="text" name="contact"></td></tr>
+		</br>
+		{{if check1=="login":}}
+		<tr><td>E-mail:</td><td><input type="text" name="email" value= {{=check4}}></td></tr>
+		{{pass}}
+		{{if check1=="login1":}}
+		<tr><td>E-mail:</td><td><input type="text" name="email"></td></tr>
+		{{pass}}
+		<tr><td>Comments:</td><td><textarea rows="8" name="comments"></textarea></td></tr>
+		<tr><td></td><td><button type="submit" name="forsub" value="forsub" >Submit</button></td></tr>
+		</table>
+	</form>
+</div>
