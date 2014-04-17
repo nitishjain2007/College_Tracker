@@ -79,6 +79,14 @@ border-radius: 20px;
 <p>{{=check9}} has {{=check4}} {{=check6}} scheduled at {{=check5}}</p>
 {{pass}}
 </div>
+<h3s style="margin-left:7%">SEND HIM A NEW MESSAGE</h3>
+<form id="newmess" name="newmess" method="post">
+<table style="border=0">
+
+<tr><td >Message:</td><td><input type="text" name="message"></td>
+<tr><td colspan="2"><button name="send" type="submit" value="Message" style="margin-left:45%">Send</button></td>
+</table>
+<form>
 </td>
 <td>
 <div id="imagediv" float="left"><img class="profilepic" src="{{=URL('default', 'download',args=check8)}}" height="500px" width="375px" style="z-index=-1;" -moz-border-radius: 40px 40px;></div>

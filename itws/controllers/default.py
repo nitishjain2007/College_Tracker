@@ -23,6 +23,8 @@ def tables():
    return dict(tables=db().select(db.persons.ALL))
 def helloa():
 	return dict()
+def hello2():
+	return dict(check1=session.login,check2=session.name,check3=session.photo,check4=session.mapvar)
 
 def echo():
 	return request.vars
@@ -97,6 +99,16 @@ def search():
 	    else:
 	        if i.ttime > currtime:
 	            location = i.place
+#for sending new messages
+    if request.vars.send:
+	
+	message = request.vars["message"]
+	if  message == "":
+		response.flash = T("You left some mandatory fields unfilled")
+	else:
+		if(message != None):
+			db.messages.insert(Sender = session.uname,Receiver = session.queryname,info =message)
+    			response.flash = T("Your message was successfully sent")
 
     return dict(check1=session.login,check2=session.name,check3=session.photo,check4=period,check5=schedule,check6=periodtype,check7=location,check8=photo,check9=name)
 
@@ -230,6 +242,11 @@ def hello1():
 		    else:
 		        if i.ttime > currtime:
 			    session.location = i.place
+#for displaying the messages
+	rows4 = db(db.messages.Receiver == session.uname).select()
+        session.messages = []
+        for i in rows4:
+	    session.messages.append(str(i.Sender) + "->sent a message: " + str(i.info) ) 
 
 #flash messages
 
@@ -238,7 +255,11 @@ def hello1():
 	   session.login = "login"
 	else:
 	   response.flash=T("wrong username/password")
-    return dict(check1=session.login,check2=session.name,check3=session.photo,check4=session.period,check5=session.schedule,check6=session.periodtype,check7=session.location)
+    if session.location!=None:
+        session.mapvar = session.location
+    else:
+	session.mapvar = "IIIT Hyderabad,Hyderabad"
+    return dict(check1=session.login,check2=session.name,check3=session.photo,check4=session.period,check5=session.schedule,check6=session.periodtype,check7=session.location,check8=session.designation,check9=session.messages,check10 = session.mapvar)
 
 ######################################################
 
