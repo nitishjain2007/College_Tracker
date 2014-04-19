@@ -1,0 +1,172 @@
+{{extend 'layout.html'}}
+<html>
+<head>
+<style>
+  
+
+
+  #appname
+{
+  width:100%;
+  height:60%;
+  padding:20px 0 0 40px;
+  color:white;
+  letter-spacing:2px;
+  font-size:35px;
+  font-weight:bold;
+}
+#buts
+{
+  width:100%;
+  height:40%;
+  margin-left:30px;
+}
+</style>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Google Maps JavaScript API v3 Example: Geocoding Simple</title>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var geocoder;
+  var map;
+  var address = "IIIT Hyderabad,Hyderabad,India";
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 6,
+      center: latlng,
+    mapTypeControl: true,
+    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+    navigationControl: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    if (geocoder) {
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+          map.setCenter(results[0].geometry.location);
+
+            var infowindow = new google.maps.InfoWindow(
+                { content: '<b>'+address+'</b>',
+                  size: new google.maps.Size(150,50)
+                });
+
+            var marker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: map, 
+                title:address
+            }); 
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
+            });
+
+          } else {
+            alert("No results found");
+          }
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+ }
+</script>
+</head>
+<body style="margin:0px; padding:0px;" >
+<!--<div id="nav">
+  <div id="ntop">
+    <p id="appname">iiit tracker</p>
+  </div>
+  <div id="buts">
+	<ul id="bar">
+		<li><a id="listitem" href="index">Home</a></li>
+		<li><a id="listitem" href="http://www.iiit.ac.in">IIIT HYDERABAD</a></li>
+		<li><a id="listitem" href="faq">FAQs</a></li>
+		<li><a id="listitem" href="#">Contacts</a></li>
+		{{if check1=="login1":}}
+		<li style="float: right;" name="loginbutton"><a id="listitem" href="hello1">Login</a></li>
+		{{pass}}
+		{{if check1=="login":}}
+		<li style="float: right;" name="logoutbutton"><a id="listitem" href="hello1?a=logout">Logout</a></li>
+		<li style="float: right;padding:8px 15px;font-weight:bold;color:#fff;">Hi {{=check2}}</li>
+        <li style="float: right;"><a href="hello1"><div height="35px" width="35px" border-radius="2px"><img src="{{=URL('default', 'download',args=check3)}}" height="35px" width="35px"></a></div></li>
+		{{pass}}
+		</ul>
+  </div>-->
+  <div id="nav">
+  <div id="ntop">
+    <p id="appname">iiit tracker</p>
+  </div>
+  <div id="buts">
+   <ul id="bar">
+    <li><a id="listitem" href="index">Home</a></li>
+    <li><a id="listitem" href="http://www.iiit.ac.in">IIIT HYDERABAD</a></li>
+    <li><a id="listitem" href="faq">FAQs</a></li>
+    <li><a id="listitem" href="hs">Help & Support</a></li>
+    {{if check1=="login1":}}
+    <li style="margin-left:52%;" name="loginbutton"><a id="listitem" href="hello1">Login</a></li>
+    {{pass}}
+    {{if check1=="login":}}
+    <li style="margin:1% 0 0 38%;font-weight:bold;color:#fff;border:none;background-color:#282828;">Hi {{=check2}}</li>
+    <li style="border:none;background-color:#282828;"><a href="hello1"><div height="35px" width="35px" border-radius="2px"><img src="{{=URL('default', 'download',args=check3)}}" height="35px" width="35px"></a></div></li>
+    <li style="margin-left:2%;" name="logoutbutton"><a id="listitem" href="hello1?a=logout">Logout</a></li>
+
+    {{pass}}
+  </ul>
+</div>
+	<div id="map_canvas" style="width:100%; height:590px;"></div>
+    <div id="mapvar" >{{=check4}}</div></div>
+</body>
+<script>
+//alert("hi");
+var s = document.getElementById("mapvar").innerHTML;
+alert(s);
+  var geocoder;
+  var map;
+  var address = s;
+  //alert(address);
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 6,
+      center: latlng,
+    mapTypeControl: true,
+    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+    navigationControl: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    if (geocoder) {
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+          map.setCenter(results[0].geometry.location);
+
+            var infowindow = new google.maps.InfoWindow(
+                { content: '<b>'+address+'</b>',
+                  size: new google.maps.Size(150,50)
+                });
+
+            var marker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: map, 
+                title:address
+            }); 
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
+            });
+
+          } else {
+            alert("No results found");
+          }
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    }
+ }
+window.addEventListener("load",initialize)
+</script>
+</html>

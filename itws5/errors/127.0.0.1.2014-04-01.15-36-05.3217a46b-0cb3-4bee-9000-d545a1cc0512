@@ -1,0 +1,641 @@
+(dp1
+S'output'
+p2
+S"<class 'sqlite3.OperationalError'> no such table: locations"
+p3
+sS'layer'
+p4
+S'/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/models/db.py'
+p5
+sS'code'
+p6
+S'# -*- coding: utf-8 -*-\n\n#########################################################################\n## This scaffolding model makes your app work on Google App Engine too\n## File is released under public domain and you can use without limitations\n#########################################################################\n\n## if SSL/HTTPS is properly configured and you want all HTTP requests to\n## be redirected to HTTPS, uncomment the line below:\n# request.requires_https()\n\nif not request.env.web2py_runtime_gae:\n    ## if NOT running on Google App Engine use SQLite or other DB\n    db = DAL(\'sqlite://storage.sqlite\',pool_size=1,check_reserved=[\'all\'])\nelse:\n    ## connect to Google BigTable (optional \'google:datastore://namespace\')\n    db = DAL(\'google:datastore\')\n    ## store sessions and tickets there\n    session.connect(request, response, db=db)\n    ## or store session in Memcache, Redis, etc.\n    ## from gluon.contrib.memdb import MEMDB\n    ## from google.appengine.api.memcache import Client\n    ## session.connect(request, response, db = MEMDB(Client()))\n\n## by default give a view/generic.extension to all actions from localhost\n## none otherwise. a pattern can be \'controller/function.extension\'\nresponse.generic_patterns = [\'*\'] if request.is_local else []\n## (optional) optimize handling of static files\n# response.optimize_css = \'concat,minify,inline\'\n# response.optimize_js = \'concat,minify,inline\'\n## (optional) static assets folder versioning\n# response.static_version = \'0.0.0\'\n#########################################################################\n## Here is sample code if you need for\n## - email capabilities\n## - authentication (registration, login, logout, ... )\n## - authorization (role based authorization)\n## - services (xml, csv, json, xmlrpc, jsonrpc, amf, rss)\n## - old style crud actions\n## (more options discussed in gluon/tools.py)\n#########################################################################\n\nfrom gluon.tools import Auth, Crud, Service, PluginManager, prettydate\nauth = Auth(db)\ncrud, service, plugins = Crud(db), Service(), PluginManager()\n\n## create all tables needed by auth if not custom tables\nauth.define_tables(username=False, signature=False)\n\n## configure email\nmail = auth.settings.mailer\nmail.settings.server = \'logging\' or \'smtp.gmail.com:587\'\nmail.settings.sender = \'you@gmail.com\'\nmail.settings.login = \'username:password\'\n\n## configure auth policy\nauth.settings.registration_requires_verification = False\nauth.settings.registration_requires_approval = False\nauth.settings.reset_password_requires_verification = True\n\n## if you need to use OpenID, Facebook, MySpace, Twitter, Linkedin, etc.\n## register with janrain.com, write your domain:api_key in private/janrain.key\nfrom gluon.contrib.login_methods.rpx_account import use_janrain\nuse_janrain(auth, filename=\'private/janrain.key\')\n\n#########################################################################\n## Define your tables below (or better in another model file) for example\n##\n## >>> db.define_table(\'mytable\',Field(\'myfield\',\'string\'))\n##\n## Fields can be \'string\',\'text\',\'password\',\'integer\',\'double\',\'boolean\'\n##       \'date\',\'time\',\'datetime\',\'blob\',\'upload\', \'reference TABLENAME\'\n## There is an implicit \'id integer autoincrement\' field\n## Consult manual for more options, validators, etc.\n##\n## More API examples for controllers:\n##\n## >>> db.mytable.insert(myfield=\'value\')\n## >>> rows=db(db.mytable.myfield==\'value\').select(db.mytable.ALL)\n## >>> for row in rows: print row.id, row.myfield\n#########################################################################\n\n## after defining tables, uncomment below to enable auditing\n# auth.enable_record_versioning(db)\ndb.define_table("persons",Field("name","string"),Field("password","password"),Field("designation","string"),Field("sex","string"),Field("photo","upload"))\ndb.define_table("ug2k13",Field("name","string"),Field("roll_no","integer"),Field("sec","string"))\ndb.define_table("ug2k12",Field("name","string"),Field("roll_no","integer"),Field("sec","string"))\ndb.define_table("periods",Field("pname","string"),Field("T1","time"),Field("T2","time"))\ndb.define_table("ug2k13_A",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))\ndb.define_table("ug2k13_B",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))\ndb.define_table("ug2k12_A",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))\ndb.define_table("ug2k12_B",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))\ndb.define_table("locations",Field("place","string"),Field("fdate","string"),Field("ftime","string"),Field("tdate","string"),Field("ttime","string"))\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'sqlite3'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of OperationalError object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of OperationalError object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of OperationalError object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of OperationalError object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'__init__'
+p26
+S"<method-wrapper '__init__' of OperationalError object>"
+p27
+sS'__setattr__'
+p28
+S"<method-wrapper '__setattr__' of OperationalError object>"
+p29
+sS'__reduce_ex__'
+p30
+S'<built-in method __reduce_ex__ of OperationalError object>'
+p31
+sS'__new__'
+p32
+S'<built-in method __new__ of type object>'
+p33
+sS'__format__'
+p34
+S'<built-in method __format__ of OperationalError object>'
+p35
+sS'__class__'
+p36
+S"<class 'sqlite3.OperationalError'>"
+p37
+sS'__doc__'
+p38
+S'None'
+p39
+sS'__getitem__'
+p40
+S"<method-wrapper '__getitem__' of OperationalError object>"
+p41
+sS'__setstate__'
+p42
+S'<built-in method __setstate__ of OperationalError object>'
+p43
+sS'__getattribute__'
+p44
+S"<method-wrapper '__getattribute__' of OperationalError object>"
+p45
+sS'args'
+p46
+S"('no such table: locations',)"
+p47
+sS'__subclasshook__'
+p48
+S'<built-in method __subclasshook__ of type object>'
+p49
+sS'__unicode__'
+p50
+S'<built-in method __unicode__ of OperationalError object>'
+p51
+sS'__delattr__'
+p52
+S"<method-wrapper '__delattr__' of OperationalError object>"
+p53
+sS'__repr__'
+p54
+S"<method-wrapper '__repr__' of OperationalError object>"
+p55
+sS'__hash__'
+p56
+S"<method-wrapper '__hash__' of OperationalError object>"
+p57
+ssS'evalue'
+p58
+S'no such table: locations'
+p59
+sS'request'
+p60
+cgluon.html
+XML_unpickle
+p61
+(S's\x14Y\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>itws</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_itws</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-eda38e33-0d52-4cc9-871e-2f283021bff3<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-49be3c52-ef39-48eb-a220-f42062ae5511<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">CONTENT_LENGTH</td><td style="vertical-align:top;">:</td><td><div>41</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">CONTENT_TYPE</td><td style="vertical-align:top;">:</td><td><div>application/x-www-form-urlencoded</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.5</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONTENT_LENGTH</td><td style="vertical-align:top;">:</td><td><div>41</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONTENT_TYPE</td><td style="vertical-align:top;">:</td><td><div>application/x-www-form-urlencoded</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-49be3c52-ef39-48eb-a220-f42062ae5511; session_id_itws=127.0.0.1-eda38e33-0d52-4cc9-871e-2f283021bff3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/itws/default/hello1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/itws/default/hello1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>38189</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>POST</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>CR13046</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/ug/ug2k13/cse/nitish.jain/web2py/applications/welcome/&#x27;, &#x27;/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/ug/ug2k13/cse/nitish.jain/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x8e88b0c: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;::1&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;CR13046&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/ug/ug2k13/cse/nitish.jain/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;scheduler_groups&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">content_length</td><td style="vertical-align:top;">:</td><td><div>41</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">content_type</td><td style="vertical-align:top;">:</td><td><div>application/x-www-form-urlencoded</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/ug/ug2k13/cse/nitish.jain/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.5</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_content_length</td><td style="vertical-align:top;">:</td><td><div>41</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_content_type</td><td style="vertical-align:top;">:</td><td><div>application/x-www-form-urlencoded</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-49be3c52-ef39-48eb-a220-f42062ae5511; session_id_itws=127.0.0.1-eda38e33-0d52-4cc9-871e-2f283021bff3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/itws/default/hello1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (X11; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>10.3.8.89</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>localhost6.localdomain6</div></td></tr><tr><td><div>CR13046</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/itws/default/hello1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>38189</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>POST</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/itws/default/hello1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>CR13046</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/ug/ug2k13/cse/nitish.jain/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.9.5-stable+timestamp.2014.03.16.02.35.39</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0xb77c50d0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x8e42efc&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0xafcb1a6c&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0xb77c50d0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x8e42efc&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0xafcb1a6c&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>hello1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/ug/ug2k13/cse/nitish.jain/web2py/applications/welcome/&#x27;, &#x27;/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/ug/ug2k13/cse/nitish.jain/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x8e88b0c: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;::1&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;CR13046&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/ug/ug2k13/cse/nitish.jain/web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;scheduler_groups&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/ug/ug2k13/cse/nitish.jain/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>10.3.8.89</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>localhost6.localdomain6</div></td></tr><tr><td><div>CR13046</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.9.5-stable+timestamp.2014.03.16.02.35.39</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2014, 4, 1, 15, 36, 5, 880337)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/itws/default/hello1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2014, 4, 1, 10, 6, 5, 880361)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uuid</td><td style="vertical-align:top;">:</td><td><div>itws/127.0.0.1.2014-04-01.15-36-05.3217a46b-0cb3-4bee-9000-d545a1cc0512</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0xafbdea8c&gt;</div></td></tr></table></div>'
+tRp62
+sS'frames'
+p63
+(lp64
+(dp65
+S'file'
+p66
+S'/ug/ug2k13/cse/nitish.jain/web2py/gluon/restricted.py'
+p67
+sS'dump'
+p68
+(dp69
+S'environment'
+p70
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, 'CENTER': <class 'gluon.html.CENTER'>, ...}"
+p71
+sS'ccode'
+p72
+S'<code object <module> at 0x927d260, file "/ug/ug.../web2py/applications/itws/models/db.py", line 12>'
+p73
+ssS'lnum'
+p74
+I220
+sS'lines'
+p75
+(dp76
+I224
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p77
+sI215
+S'    try:'
+p78
+sI216
+S'        if isinstance(code, types.CodeType):'
+p79
+sI217
+S'            ccode = code'
+p80
+sI218
+S'        else:'
+p81
+sI219
+S'            ccode = compile2(code, layer)'
+p82
+sI220
+S'        exec ccode in environment'
+p83
+sI221
+S'    except HTTP:'
+p84
+sI222
+S'        raise'
+p85
+sI223
+S'    except RestrictedError:'
+p86
+ssS'call'
+p87
+S'(code=\'# -*- coding: utf-8 -*-\\n\\n#######################...Field("tdate","string"),Field("ttime","string"))\\n\', environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, \'CAT\': <class \'gluon.html.CAT\'>, \'CENTER\': <class \'gluon.html.CENTER\'>, ...}, layer=\'/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/models/db.py\')'
+p88
+sS'func'
+p89
+S'restricted'
+p90
+sa(dp91
+g66
+S'/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/models/db.py'
+p92
+sg68
+(dp93
+S'Field'
+p94
+S"<class 'gluon.dal.Field'>"
+p95
+sS'db.define_table'
+p96
+S'<bound method DAL.define_table of <DAL uri="sqlite://storage.sqlite">>'
+p97
+sS'db'
+p98
+S'<DAL uri="sqlite://storage.sqlite">'
+p99
+ssg74
+I93
+sg75
+(dp100
+I84
+S'# auth.enable_record_versioning(db)'
+p101
+sI85
+S'db.define_table("persons",Field("name","string"),Field("password","password"),Field("designation","string"),Field("sex","string"),Field("photo","upload"))'
+p102
+sI86
+S'db.define_table("ug2k13",Field("name","string"),Field("roll_no","integer"),Field("sec","string"))'
+p103
+sI87
+S'db.define_table("ug2k12",Field("name","string"),Field("roll_no","integer"),Field("sec","string"))'
+p104
+sI88
+S'db.define_table("periods",Field("pname","string"),Field("T1","time"),Field("T2","time"))'
+p105
+sI89
+S'db.define_table("ug2k13_A",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))'
+p106
+sI90
+S'db.define_table("ug2k13_B",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))'
+p107
+sI91
+S'db.define_table("ug2k12_A",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))'
+p108
+sI92
+S'db.define_table("ug2k12_B",Field("dayn","string"),Field("period1","string"),Field("period2","string"),Field("period3","string"),Field("period4","string"),Field("labs","string"))'
+p109
+sI93
+S'db.define_table("locations",Field("place","string"),Field("fdate","string"),Field("ftime","string"),Field("tdate","string"),Field("ttime","string"))'
+p110
+ssg87
+S'()'
+p111
+sg89
+S'<module>'
+p112
+sa(dp113
+g66
+S'/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py'
+p114
+sg68
+(dp115
+S'fields'
+p116
+S'(<gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>)'
+p117
+sS'self'
+p118
+S'<DAL uri="sqlite://storage.sqlite">'
+p119
+sS'args'
+p120
+g21
+sS'tablename'
+p121
+S"'locations'"
+p122
+sS'table'
+p123
+S'undefined'
+p124
+sS'self.lazy_define_table'
+p125
+S'<bound method DAL.lazy_define_table of <DAL uri="sqlite://storage.sqlite">>'
+p126
+ssg74
+I8223
+sg75
+(dp127
+I8224
+S'        if not tablename in self.tables:'
+p128
+sI8225
+S'            self.tables.append(tablename)'
+p129
+sI8226
+S'        return table'
+p130
+sI8227
+S''
+sI8218
+S'                    % (tablename,invalid_args))'
+p131
+sI8219
+S'        if self._lazy_tables and not tablename in self._LAZY_TABLES:'
+p132
+sI8220
+S'            self._LAZY_TABLES[tablename] = (tablename,fields,args)'
+p133
+sI8221
+S'            table = None'
+p134
+sI8222
+S'        else:'
+p135
+sI8223
+S'            table = self.lazy_define_table(tablename,*fields,**args)'
+p136
+ssg87
+S'(self=<DAL uri="sqlite://storage.sqlite">, tablename=\'locations\', *fields=(<gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>), **args={})'
+p137
+sg89
+S'define_table'
+p138
+sa(dp139
+g66
+S'/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py'
+p140
+sg68
+(dp141
+S'polymodel'
+p142
+S'None'
+p143
+ssg74
+I8260
+sg75
+(dp144
+I8256
+S'                GLOBAL_LOCKER.acquire()'
+p145
+sI8257
+S'                self._lastsql = self._adapter.create_table('
+p146
+sI8258
+S'                    table,migrate=migrate,'
+p147
+sI8259
+S'                    fake_migrate=fake_migrate,'
+p148
+sI8260
+S'                    polymodel=polymodel)'
+p149
+sI8261
+S'            finally:'
+p150
+sI8262
+S'                GLOBAL_LOCKER.release()'
+p151
+sI8263
+S'        else:'
+p152
+sI8264
+S'            table._dbt = None'
+p153
+sI8255
+S'            try:'
+p154
+ssg87
+S'(self=<DAL uri="sqlite://storage.sqlite">, tablename=\'locations\', *fields=(<gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>, <gluon.dal.Field object>), **args={})'
+p155
+sg89
+S'lazy_define_table'
+p156
+sa(dp157
+g66
+S'/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py'
+p158
+sg68
+(dp159
+S'fake_migrate'
+p160
+S'False'
+p161
+ssg74
+I1132
+sg75
+(dp162
+I1127
+S'            if sql_fields != sql_fields_old:'
+p163
+sI1128
+S'                self.migrate_table('
+p164
+sI1129
+S'                    table,'
+p165
+sI1130
+S'                    sql_fields, sql_fields_old,'
+p166
+sI1131
+S'                    sql_fields_aux, None,'
+p167
+sI1132
+S'                    fake_migrate=fake_migrate'
+p168
+sI1133
+S'                    )'
+p169
+sI1134
+S'        return query'
+p170
+sI1135
+S''
+sI1136
+S'    def migrate_table('
+p171
+ssg87
+S'(self=<gluon.dal.SQLiteAdapter object>, table=<Table locations (id,place,fdate,ftime,tdate,ttime)>, migrate=True, fake_migrate=False, polymodel=None)'
+p172
+sg89
+S'create_table'
+p173
+sa(dp174
+g66
+S'/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py'
+p175
+sg68
+(dp176
+S'self'
+p177
+S'<gluon.dal.SQLiteAdapter object>'
+p178
+sS'self.execute'
+p179
+S'<bound method SQLiteAdapter.execute of <gluon.dal.SQLiteAdapter object>>'
+p180
+sS'sub_query'
+p181
+S"'ALTER TABLE locations ADD tdate CHAR(512);'"
+p182
+ssg74
+I1245
+sg75
+(dp183
+I1248
+S'                        # in one transaction so we must commit'
+p184
+sI1249
+S'                        # partial transactions and'
+p185
+sI1240
+S'                    if fake_migrate:'
+p186
+sI1241
+S'                        if db._adapter.commit_on_alter_table:'
+p187
+sI1242
+S'                            self.save_dbt(table,sql_fields_current)'
+p188
+sI1243
+S"                        self.log('faked!\\n', table)"
+p189
+sI1244
+S'                    else:'
+p190
+sI1245
+S'                        self.execute(sub_query)'
+p191
+sI1246
+S'                        # Caveat: mysql, oracle and firebird'
+p192
+sI1247
+S'                        # do not allow multiple alter table'
+p193
+ssg87
+S"(self=<gluon.dal.SQLiteAdapter object>, table=<Table locations (id,place,fdate,ftime,tdate,ttime)>, sql_fields={'fdate': {'length': 512, 'notnull': False, 'sortable': 3, 'sql': 'CHAR(512)', 'type': 'string', 'unique': False}, 'ftime': {'length': 512, 'notnull': False, 'sortable': 4, 'sql': 'CHAR(512)', 'type': 'string', 'unique': False}, 'id': {'length': 512, 'notnull': False, 'sortable': 1, 'sql': 'INTEGER PRIMARY KEY AUTOINCREMENT', 'type': 'id', 'unique': False}, 'place': {'length': 512, 'notnull': False, 'sortable': 2, 'sql': 'CHAR(512)', 'type': 'string', 'unique': False}, 'tdate': {'length': 512, 'notnull': False, 'sortable': 5, 'sql': 'CHAR(512)', 'type': 'string', 'unique': False}, 'ttime': {'length': 512, 'notnull': False, 'sortable': 6, 'sql': 'CHAR(512)', 'type': 'string', 'unique': False}}, sql_fields_old={'froms': {'length': 512, 'notnull': False, 'sortable': 3, 'sql': 'TIMESTAMP', 'type': 'datetime', 'unique': False}, 'id': {'length': 512, 'notnull': False, 'sortable': 1, 'sql': 'INTEGER PRIMARY KEY AUTOINCREMENT', 'type': 'id', 'unique': False}, 'place': {'length': 512, 'notnull': False, 'sortable': 2, 'sql': 'CHAR(512)', 'type': 'string', 'unique': False}, 'tos': {'length': 512, 'notnull': False, 'sortable': 4, 'sql': 'TIMESTAMP', 'type': 'datetime', 'unique': False}}, sql_fields_aux={'fdate': {'sql': 'CHAR(512)'}, 'ftime': {'sql': 'CHAR(512)'}, 'id': {'sql': 'INTEGER PRIMARY KEY AUTOINCREMENT'}, 'place': {'sql': 'CHAR(512)'}, 'tdate': {'sql': 'CHAR(512)'}, 'ttime': {'sql': 'CHAR(512)'}}, logfile=None, fake_migrate=False)"
+p194
+sg89
+S'migrate_table'
+p195
+sa(dp196
+g66
+S'/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py'
+p197
+sg68
+(dp198
+S'a'
+S"('ALTER TABLE locations ADD tdate CHAR(512);',)"
+p199
+sS'self'
+p200
+S'<gluon.dal.SQLiteAdapter object>'
+p201
+sS'b'
+g21
+sS'self.log_execute'
+p202
+S'<bound method SQLiteAdapter.log_execute of <gluon.dal.SQLiteAdapter object>>'
+p203
+ssg74
+I1969
+sg75
+(dp204
+I1964
+S'        self.db._timings.append((command,time.time()-t0))'
+p205
+sI1965
+S'        del self.db._timings[:-TIMINGSSIZE]'
+p206
+sI1966
+S'        return ret'
+p207
+sI1967
+S''
+sI1968
+S'    def execute(self, *a, **b):'
+p208
+sI1969
+S'        return self.log_execute(*a, **b)'
+p209
+sI1970
+S''
+sI1971
+S'    def represent(self, obj, fieldtype):'
+p210
+sI1972
+S'        field_is_type = fieldtype.startswith'
+p211
+sI1973
+S'        if isinstance(obj, CALLABLETYPES):'
+p212
+ssg87
+S"(self=<gluon.dal.SQLiteAdapter object>, *a=('ALTER TABLE locations ADD tdate CHAR(512);',), **b={})"
+p213
+sg89
+S'execute'
+p214
+sa(dp215
+g66
+S'/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py'
+p216
+sg68
+(dp217
+S'a'
+S"('ALTER TABLE locations ADD tdate CHAR(512);',)"
+p218
+sS'b'
+g21
+sS'self'
+p219
+S'<gluon.dal.SQLiteAdapter object>'
+p220
+sS'ret'
+p221
+g124
+sS'self.cursor'
+p222
+S'<sqlite3.Cursor object>'
+p223
+sS'command'
+p224
+S"'ALTER TABLE locations ADD tdate CHAR(512);'"
+p225
+sS'self.cursor.execute'
+p226
+S'<built-in method execute of sqlite3.Cursor object>'
+p227
+ssg74
+I1963
+sg75
+(dp228
+I1958
+S'            command = self.filter_sql_command(command)'
+p229
+sI1959
+S'        if self.db._debug:'
+p230
+sI1960
+S"            LOGGER.debug('SQL: %s' % command)"
+p231
+sI1961
+S'        self.db._lastsql = command'
+p232
+sI1962
+S'        t0 = time.time()'
+p233
+sI1963
+S'        ret = self.cursor.execute(command, *a[1:], **b)'
+p234
+sI1964
+S'        self.db._timings.append((command,time.time()-t0))'
+p235
+sI1965
+S'        del self.db._timings[:-TIMINGSSIZE]'
+p236
+sI1966
+S'        return ret'
+p237
+sI1967
+S''
+ssg87
+S"(self=<gluon.dal.SQLiteAdapter object>, *a=('ALTER TABLE locations ADD tdate CHAR(512);',), **b={})"
+p238
+sg89
+S'log_execute'
+p239
+sasS'pyver'
+p240
+S'Python 2.7: /usr/bin/python (prefix: /usr)'
+p241
+sS'session'
+p242
+g61
+(S's\x9f\x07\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">days</td><td style="vertical-align:top;">:</td><td><div>Tuesday</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">designation</td><td style="vertical-align:top;">:</td><td><div>ug2k13</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">login</td><td style="vertical-align:top;">:</td><td><div>login1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logout</td><td style="vertical-align:top;">:</td><td><div>true</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">passwo</td><td style="vertical-align:top;">:</td><td><div>nitish</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">period</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">periodname</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">photo</td><td style="vertical-align:top;">:</td><td><div>persons.photo.8a00979860ae64bd.44534330343837312e4a5047.JPG</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">sec</td><td style="vertical-align:top;">:</td><td><div>ug2k13_A</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">state</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">state2</td><td style="vertical-align:top;">:</td><td><div>logout</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">states</td><td style="vertical-align:top;">:</td><td><div>ok</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">times</td><td style="vertical-align:top;">:</td><td><div>datetime.time(15, 29, 50, 50131)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uname</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div>'
+tRp243
+sS'etype'
+p244
+S"<class 'sqlite3.OperationalError'>"
+p245
+sS'date'
+p246
+S'Tue Apr  1 15:36:06 2014'
+p247
+sS'response'
+p248
+g61
+(S's\xce\x16\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0xafbde400&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_itws</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-eda38e33-0d52-4cc9-871e-2f283021bff3<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/hello1/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_itws</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/sessions/127.0.0.1-eda38e33-0d52-4cc9-871e-2f283021bff3&#x27;, mode &#x27;rb+&#x27; at 0x8e65f98&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/sessions/127.0.0.1-eda38e33-0d52-4cc9-871e-2f283021bff3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>d61c2c9323b63c2d2453340999426959</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-eda38e33-0d52-4cc9-871e-2f283021bff3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_itws</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>itws</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/hello1.html</div></td></tr></table></div>'
+tRp249
+sS'locals'
+p250
+(dp251
+S'a'
+S"('ALTER TABLE locations ADD tdate CHAR(512);',)"
+p252
+sS'self'
+p253
+S'<gluon.dal.SQLiteAdapter object>'
+p254
+sS'b'
+g21
+sS'command'
+p255
+S"'ALTER TABLE locations ADD tdate CHAR(512);'"
+p256
+sS't0'
+p257
+S'1396346766.046228'
+p258
+sssS'traceback'
+p259
+S'Traceback (most recent call last):\n  File "/ug/ug2k13/cse/nitish.jain/web2py/gluon/restricted.py", line 220, in restricted\n    exec ccode in environment\n  File "/ug/ug2k13/cse/nitish.jain/web2py/applications/itws/models/db.py", line 93, in <module>\n    db.define_table("locations",Field("place","string"),Field("fdate","string"),Field("ftime","string"),Field("tdate","string"),Field("ttime","string"))\n  File "/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py", line 8223, in define_table\n    table = self.lazy_define_table(tablename,*fields,**args)\n  File "/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py", line 8260, in lazy_define_table\n    polymodel=polymodel)\n  File "/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py", line 1132, in create_table\n    fake_migrate=fake_migrate\n  File "/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py", line 1245, in migrate_table\n    self.execute(sub_query)\n  File "/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py", line 1969, in execute\n    return self.log_execute(*a, **b)\n  File "/ug/ug2k13/cse/nitish.jain/web2py/gluon/dal.py", line 1963, in log_execute\n    ret = self.cursor.execute(command, *a[1:], **b)\nOperationalError: no such table: locations\n'
+p260
+s.

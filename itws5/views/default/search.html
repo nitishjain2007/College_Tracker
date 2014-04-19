@@ -1,0 +1,120 @@
+{{extend 'layout.html'}}
+<style>
+div.inline { display:inline; }
+#imagediv{
+/*background-image: url({{=URL('default', 'download','args=check3')}})*/
+float: right;
+width: 375px;
+height: 300px;
+border: 8px solid #666;
+border-radius: 20px;
+
+
+
+}
+
+.profilepic{
+        z-index:-1;
+}
+#appname
+{
+	width:100%;
+	height:60%;
+	padding:20px 0 0 40px;
+	color:white;
+	letter-spacing:2px;
+	font-size:35px;
+	font-weight:bold;
+}
+#buts
+{
+	width:100%;
+	height:40%;
+	margin-left:30px;
+}
+</style>
+<!-- Navbar ================================================== -->
+  <div class="navbar navbar-inverse">
+    <div class="flash">{{=response.flash or ''}}</div>
+  </div><!--/top navbar -->
+<div id="nav">
+  <div id="ntop">
+    <p id="appname">iiit tracker</p>
+  </div>
+  <div id="buts">
+   <ul id="bar">
+    <li><a id="listitem" href="index">Home</a></li>
+    <li><a id="listitem" href="http://www.iiit.ac.in">IIIT HYDERABAD</a></li>
+    <li><a id="listitem" href="faq">FAQs</a></li>
+    <li><a id="listitem" href="hs">Help & Support</a></li>
+    {{if check1=="login1":}}
+    <li style="margin-left:52%;" name="loginbutton"><a id="listitem" href="hello1">Login</a></li>
+    {{pass}}
+    {{if check1=="login":}}
+    <li style="margin:1% 0 0 38%;font-weight:bold;color:#fff;border:none;background-color:#282828;">Hi {{=check2}}</li>
+    <li style="border:none;background-color:#282828;"><a href="hello1"><div height="35px" width="35px" border-radius="2px"><img src="{{=URL('default', 'download',args=check3)}}" height="35px" width="35px"></a></div></li>
+    <li style="margin-left:2%;" name="logoutbutton"><a id="listitem" href="hello1?a=logout">Logout</a></li>
+
+    {{pass}}
+  </ul>
+</div>
+</div>
+  <div class="container">
+    <!-- Masthead ================================================== -->
+    
+
+    <section id="main" class="main row">
+        {{if left_sidebar_enabled:}}
+        <div class="span3 left-sidebar">
+            {{block left_sidebar}}
+            <h3>Left Sidebar</h3>
+            <p></p>
+            {{end}}
+        </div>
+        {{pass}}
+	<div class="{{=middle_columns}}">
+            {{block center}}
+
+<div height="500px" width="1800px">
+<table border="0px">
+<tr>
+<td width="1000px">
+<div float="left" height="700px" width="100px">
+<h1 width="100px">Profile of {{=check9}}</h1>
+
+{{if check7 == None:}}
+<p>No location specified by {{=check9}}..</p>
+{{else:}}
+<p>Most recent location specified by {{=check9}} is {{=check7}}</p>
+{{pass}}
+{{if check4 == None:}}
+<p>{{=check9}} has no class right now..</p>
+{{else:}}
+<p>{{=check9}} has {{=check4}} {{=check6}} scheduled at {{=check5}}.. 	</p>
+{{pass}}
+</div>
+<h3s style="margin-left:17%;font-weight:bold;">SEND HIM A NEW MESSAGE</h3>
+<form id="newmess" name="newmess" method="post">
+<table style="border=0">
+
+<tr><td >Message:</td><td><input type="text" name="message"></td>
+<tr><td colspan="2"><button name="send" type="submit" value="Message" style="margin-left:45%">Send</button></td>
+</table>
+<form>
+<a href="hello2"><button type="button">look him on map</button></a>
+</td>
+<td>
+<div id="imagediv" float="left"><img class="profilepic" src="{{=URL('default', 'download',args=check8)}}" height="300px" width="375px" style="z-index=-1;" -moz-border-radius: 40px 40px;></div>
+</td>
+</tr>
+</table>
+</div>
+{{end}}
+
+
+
+
+
+
+
+
