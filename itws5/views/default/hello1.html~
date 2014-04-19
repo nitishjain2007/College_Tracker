@@ -1,0 +1,590 @@
+{{extend 'layout.html'}}
+<style>
+div.inline { display:inline; }
+#imagediv{
+  /*background-image: url({{=URL('default', 'download','args=check3')}})*/
+  float: right;
+  width: 375px;
+  height: 300px;
+  border: 8px solid #666;
+  border-radius: 20px;
+
+
+
+}
+
+.profilepic{
+  z-index:-1;
+}
+
+#appname
+{
+	width:100%;
+	height:60%;
+	padding:20px 0 10px 0;
+	margin-left:40px;
+	color:white;
+	letter-spacing:2px;
+	font-size:35px;
+	font-weight:bold;
+}
+#buts
+{
+	width:100%;
+	height:40%;
+	margin-left:30px;
+}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.about {
+  margin: 70px auto 40px;
+  padding: 8px;
+  width: 260px;
+  font: 10px/18px 'Lucida Grande', Arial, sans-serif;
+  color: #666;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.25);
+  background: #eee;
+  background: rgba(250, 250, 250, 0.8);
+  border-radius: 4px;
+  text-align: center;
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
+}
+.about a {
+  color: #	333;
+  text-decoration: none;
+  border-radius: 2px;
+  -webkit-transition: background 0.1s;
+  -moz-transition: background 0.1s;
+  -o-transition: background 0.1s;
+}
+  transition: background 0.1s;
+.about a:hover {
+  text-decoration: none;
+  background: #fafafa;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.about-links {
+  height: 30px;
+}
+.about-links > a {
+  float: left;
+  width: 50%;
+  line-height: 30px;
+  font-size: 12px;
+}
+
+.about-author {
+  margin-top: 5px;
+}
+.about-author > a {
+  padding: 1px 3px;
+  margin: 0 -1px;
+}
+
+
+ .login-submit, .login-submit:before, .login-submit:after {
+  background: #373737 url("/itws/views/img/bg.png") 0 0 repeat;
+}
+
+body {
+  font: 14px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #404040;
+}
+
+a {
+  color: #00a1d2;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.login {
+  position: relative;
+  margin: 35px auto;
+  width: 500px;
+  padding-left: 50px;
+  font-weight: 300;
+  color: #a8a7a8;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+}
+.login p {
+  margin: 0 0 10px;
+}
+
+input, button, label {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input[type=text], input[type=password] {
+  padding: 0 10px;
+  width: 300px;
+  height: 40px;
+  color: #bbb;
+  text-shadow: 1px 1px 1px black;
+  background: rgba(0, 0, 0, 0.16);
+  border: 0;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06);
+}
+input[type=text]:focus, input[type=password]:focus {
+  color: white;
+  background: rgba(0, 0, 0, 0.1);
+  outline: 0;
+}
+
+label {
+  float: left;
+  width: 100px;
+  line-height: 40px;
+  padding-right: 10px;
+  font-weight: 100;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+.forgot-password {
+  padding-left: 100px;
+  font-size: 13px;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+
+.login-submit {
+  position: absolute;
+  top: 20px;
+  right: 68px;
+  width: 48px;
+  height: 48px;
+  padding: 8px;
+  border-radius: 32px;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+}
+.login-submit:before, .login-submit:after {
+  content: '';
+  z-index: 1;
+  position: absolute;
+}
+.login-submit:before {
+  top: 28px;
+  left: -4px;
+  width: 4px;
+  height: 10px;
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
+}
+.login-submit:after {
+  top: -4px;
+  bottom: -4px;
+  right: -4px;
+  width: 36px;
+}
+
+.login-button {
+  position: relative;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  padding: 0 0 48px;
+  /* Fix wrong positioning in Firefox 9 & older (bug 450418) */
+  text-indent: 120%;
+  white-space: nowrap;
+  overflow: hidden;
+  background:none;
+  border: 0;
+  border-radius: 24px;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.1);
+  /* Must use another pseudo element for the gradient background because Webkit */
+  /* clips the background incorrectly inside elements with a border-radius.     */
+}
+.login-button:before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  background: #00a2d3;
+  border-radius: 24px;
+  background-image: -webkit-linear-gradient(top, #00a2d3, #0d7796);
+  background-image: -moz-linear-gradient(top, #00a2d3, #0d7796);
+  background-image: -o-linear-gradient(top, #00a2d3, #0d7796);
+  background-image: linear-gradient(to bottom, #00a2d3, #0d7796);
+  -webkit-box-shadow: inset 0 0 0 1px #00a2d3, 0 0 0 5px rgba(0, 0, 0, 0.16);
+  box-shadow: inset 0 0 0 1px #00a2d3, 0 0 0 5px rgba(0, 0, 0, 0.16);
+}
+.login-button:active:before {
+  background: #0591ba;
+  background-image: -webkit-linear-gradient(top, #0591ba, #00a2d3);
+  background-image: -moz-linear-gradient(top, #0591ba, #00a2d3);
+  background-image: -o-linear-gradient(top, #0591ba, #00a2d3);
+  background-image: linear-gradient(to bottom, #0591ba, #00a2d3);
+}
+.login-button:after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 12px;
+  width: 25px;
+  height: 19px;
+  background: url("{{=URL('static','images/arrow.png')}}");
+}
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.lt-ie9 input[type=text], .lt-ie9 input[type=password] {
+  line-height: 40px;
+  background: #282828;
+}
+.lt-ie9 .login-submit {
+  position: absolute;
+  top: 12px;
+  right: -28px;
+  padding: 4px;
+}
+.lt-ie9 .login-submit:before, .lt-ie9 .login-submit:after {
+  display: none;
+}
+.lt-ie9 .login-button {
+  line-height: 48px;
+}
+.lt-ie9 .about {
+  background: #313131;
+}
+
+#log
+{
+	background-color:#373737;
+	border:1px solid black;
+	border-radius:5px;
+	width:550px;
+	height:320px;
+	margin-left:30%;
+	margin-top:10%;
+
+}
+</style>
+<script type="text/javascript">
+var status = 1;
+function main(){
+	document.getElementById("search").style.display="none";
+  status = 2;
+  document.getElementById("getusername").style.display="none";
+}    
+function g(){
+//	$('#search').show();
+if(status==2){
+  document.getElementById("search").style.display="block";
+  document.getElementById("locationup").innerHTML = "hide form";
+  document.getElementById("showhide").innerHTML = ""
+  status=1;
+}
+else{
+  document.getElementById("search").style.display="none";
+  document.getElementById("locationup").innerHTML = "show form";
+  document.getElementById("showhide").innerHTML = "click below to update your locations"
+  status=2;
+}
+}
+function flash()
+{
+//	alert("hi");
+ans = document.getElementById("getname").value ;
+if(ans == "") {
+  document.getElementById("options").innerHTML = "";
+  return;
+}
+var xmlhttp;
+if (window.XMLHttpRequest)
+	{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			/*d = eval("(" + xmlhttp.responseText + ")");*/
+			document.getElementById("options").innerHTML=xmlhttp.responseText;/*"<div >" + d["final"][0] + "</div>" + "<div>" + d["final"][1] + "</div>";*/
+
+		}
+	}
+	xmlhttp.open("GET","names?start=" + ans ,true);
+	xmlhttp.send();
+}
+function f(i){
+	ans = document.getElementById(i);
+	ans2 = ans.innerHTML;
+	ans3 = ans2 + "u";
+	ans4 = document.getElementById(ans3);
+	ans5 = ans4.innerHTML;
+	e = document.getElementById("getusername");
+	e.value = ans5;
+	d = document.getElementById("getname");
+	d.value = ans2;
+	document.getElementById("options").innerHTML = "";
+	l(i);
+}
+window.addEventListener("load",main)
+</script>
+<!-- Navbar ================================================== -->
+<div class="navbar navbar-inverse">
+  <div class="flash">{{=response.flash or ''}}</div>
+</div><!--/top navbar -->
+<div id="nav">
+  <div id="ntop">
+    <p id="appname">iiit tracker</p>
+  </div>
+  <div id="buts">
+   <ul id="bar">
+    <li><a id="listitem" href="index">Home</a></li>
+    <li><a id="listitem" href="http://www.iiit.ac.in">IIIT HYDERABAD</a></li>
+    <li><a id="listitem" href="faq">FAQs</a></li>
+    <li><a id="listitem" href="hs">Help & Support</a></li>
+    {{if check1=="login1":}}
+    <li style="margin-left:52%;" name="loginbutton"><a id="listitem" href="hello1">Login</a></li>
+    {{pass}}
+    {{if check1=="login":}}
+    <li style="margin:1% 0 0 38%;font-weight:bold;color:#fff;border:none;background-color:#282828;">Hi {{=check2}}</li>
+    <li style="border:none;background-color:#282828;"><a href="hello1"><div height="35px" width="35px" border-radius="2px"><img src="{{=URL('default', 'download',args=check3)}}" height="35px" width="35px"></a></div></li>
+    <li style="margin-left:2%;" name="logoutbutton"><a id="listitem" href="hello1?a=logout">Logout</a></li>
+
+    {{pass}}
+  </ul>
+</div>
+</div>
+<div class="container">
+  <!-- Masthead ================================================== -->
+
+
+  <section id="main" class="main row">
+    {{if left_sidebar_enabled:}}
+    <div class="span3 left-sidebar">
+      {{block left_sidebar}}
+      <h3>Left Sidebar</h3>
+      <p></p>
+      {{end}}
+    </div>
+    {{pass}}
+    <div class="{{=middle_columns}}">
+      {{block center}}
+
+
+
+
+
+
+
+
+
+
+      {{if check1=="login1":}}
+      <!--<div id="login_page" align="center" style="width:500px;height:200px;background-color:rgba(0,0,0,0.3);border-radius:15px;margin-left:320px;margin-top:100px;">-->
+      <div id="log">
+        <h1 style="color:white;margin:5% 0 12% 35%;font-size:40px;">LOGIN</h1>
+<!--<form id="login" name="login" method="post">
+<table style="border=0">
+<tr><td>username</td><td><input type="text" name="user"></td>
+<tr><td>password</td><td><input type="password" name="pass"></td>
+<tr><td></td><td colspan="2"><button name="login1" type="submit" value="Login">Submit</button></td>
+</table>
+<form>
+</div>-->
+<form method="post" class="login" name="login">
+  <p>
+    <label for="login">Username:</label>
+    <input type="text" name="user" id="login">
+  </p>
+
+  <p>
+    <label for="password">Password:</label>
+    <input type="password" name="pass" id="password">
+  </p>
+
+  <p class="login-submit">
+    <button type="submit" class="login-button" name="login1" value="Login">Login</button>
+  </p>
+</form>
+</div>
+{{pass}}
+{{if check1=="login":}}
+<!--<div height="100%" width="50%" style="border:1px solid black;">-->
+  <table border="0px" style="margin-left:0%;margin-right:0%;width:100%;margin-top:3%;">
+    <tr>
+      <td>
+        <div float="left" height="700px" width="100px">
+          <h1 width="100px">Hey {{=check2}}!!!</h1></br>
+          
+          {{if check7 == None:}}
+          <p style="font-size:16px;font-weight:bold;">No location has been specified by you.Though you can change it by filling the form below..</p></br>
+          {{else:}}
+          <p style="font-size:16px;font-weight:bold;">your current location specified is {{=check7}}..</p></br>
+          {{pass}}
+          {{if check4 == None:}}
+          <p style="font-size:16px;font-weight:bold;">You Have no class right now..</p></br>
+          {{else:}}
+          <p style="font-size:16px;font-weight:bold;">You have your {{=check4}} {{=check6}} scheduled at {{=check5}}</p></br>
+          {{pass}}
+        </div>
+        <br>
+        <p id="showhide" style="font-weight:bold;font-style:italic;">click below to update your location-></p></br>
+        <div id="search">
+          <table>
+            <form id="update" name="update" method="post">
+              <tr>
+                <td>Place</td>
+                <td><input type="text" name="place"></td>
+              </tr>
+              <tr>
+                <td>from date</td>
+                <td><input type="text" id="datepicker1" name="fromdate"></td>
+              </tr>
+              <tr>  
+                <td>from time</td>
+                <td><input type="text" name="fromtime">
+                  <font size="1" color="grey">format 13:00:00</font></td>
+                </tr>
+                <tr>
+                  <td>to date</td>
+                  <td><input type="text" id="datepicker2" name="todate"></td>
+                </tr>
+                <tr>
+                  <td>to time</td>
+                  <td><input type="text" name="totime">
+                    <font size="1" color="grey">format 13:00:00</font></td>
+                </tr>
+                <tr>
+                    <td><button name="update" type="submit" value="Update">Update</button></td>
+            </form>
+          </table>
+        </div>
+              <button id="locationup" onclick="g()">show form</button>
+              <div id="messagetickr" style="width:400px;border-radius:5px;margin-left:13%;background-color:rgba(0,0,0,0.3);">
+                <h1 style="margin-left:29%;font-weight:bold;">MESSAGE TICKR</h1>
+                {{if len(check9) == 0:}}
+                <p>You got no messages</p>
+                {{else:}}
+                {{for i in check9:}}
+                <p>{{=i}}</p>
+                {{pass}}
+                {{pass}}</div><br/><br/> 
+{{if check2 == "karan" or check2 == "Nitish Jain":}}
+              <div id="feedback" style="width:400px;border-radius:5px;margin-left:13%;background-color:rgba(0,0,0,0.3);">
+                <h1 style="margin-left:29%;font-weight:bold;">FEEDBACK</h1>
+                {{if len(check11) == 0:}}
+                <p> No feedback...</p>
+                {{else:}}
+                {{for i in check11:}}
+                <p>{{=i}}</p>
+                {{pass}}
+                {{pass}}</div>
+{{pass}}
+
+
+
+
+                <h4 style="font-weight:bold;">Searching for someone?</h4>
+                <div id="searching">
+                  <table>
+                    <form id="search" name="search" method="post">
+                      <tr>
+                        <td>type in name for whom you are looking for -></td>
+                        <td><input type="text" id="getname" name="getname" onkeyup = "flash()"></td>
+                      </tr>
+                      <tr><td><input type="text" id="getusername" name="getusername" ></td></tr>
+                      <tr><td><button type="submit" name="search" value="search">Search</button></td></tr>
+                      
+                    </table>
+                  </form>
+                  <h3>Your Search Suggestions</h3><br/>
+                  <div id="options">
+                  </div>
+                  <a href="hello2"><button type="button">look in map your current location</button></a>
+                </div>
+                </td>
+              <!--</div>-->
+              <td>
+                <div id="imagediv"float="right"style="margin-right:0%;"><img class="profilepic" float="right" style="margin-right:0%;"src="{{=URL('default', 'download',args=check3)}}" height="300px" width="100%" style="z-index=-1;" -moz-border-radius: 40px 40px;></div>
+                <p></p>
+                <h4 style="font-weight:bold;">Change your Display Pic:</h4>
+                <form method="post" action="" enctype="multipart/form-data">
+                  <input type="hidden" name="_formname" value="image_form">
+                  <input class="upload" name="image_file" type="file">
+                  <input type="submit" value="Submit">
+                </form>
+              </div>
+              </td>
+            </tr>
+          </table>
+          {{pass}}
+          {{end}}

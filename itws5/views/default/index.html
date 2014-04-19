@@ -1,0 +1,105 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+<style>
+.page-header
+{
+	width:100%;
+	float:top;
+	height:150px;
+	background-color:#282828 ;
+}
+#appname
+{
+	padding-top:70px;
+	margin-left:540px;
+	color:white;
+	letter-spacing:4px;
+	font-size:60px;
+}
+#middle
+{
+	width:100%;
+	height:400px;
+}
+#ml
+{
+	width:42%;
+	height:93%;
+	float:left;
+	margin-left:8%;
+}
+#mr
+{
+	width:45%;
+	margin-left:50%;
+}
+#purpose
+{
+	font-size:35px;
+}
+#start
+{
+	width:150px;
+	height:70px;
+	background-color:#FF6600;
+	border:2px solid #FF6600;
+	border-radius:12px;
+	color:black;
+	font-size:18px;
+}
+#start:hover
+{
+	background-color:#FF8800;
+}
+#free
+{
+	font-size:20px;
+}
+#sample
+{
+	border:1px solid black;
+	border-radius:5px;
+}
+</style>
+<!--<div class="navbar navbar-inverse">
+    <div class="flash">{{=response.flash or ''}}</div>
+  </div>/top navbar -->
+<!--<div id="nav">
+ <ul id="bar">
+    <li><a id="listitem" href="index">Home</a></li>
+    <li><a id="listitem" href="http://www.iiit.ac.in">IIIT HYDERABAD</a></li>
+    <li><a id="listitem" href="#">FAQs</a></li>
+    <li><a id="listitem" href="#">Contacts</a></li>
+    {{if check1=="login1":}}
+    <li style="float: right;" name="loginbutton"><a id="listitem" href="hello1">Login</a></li>
+    {{pass}}
+    {{if check1=="login":}}
+    <li style="float: right;" name="logoutbutton" onclick="ajax('hello1', ['logoutbutton'], '')"><a id="listitem" href="hello1?a=logout">Logout</a></li>
+    <li style="float: right;padding:8px 15px;font-weight:bold;color:#fff;">Hi {{=check2}}</li>
+        <li style="float: right;"><a href="hello1"><img src="{{=URL('default', 'download',args=check3)}}" height="35px" width="35px"></li></a></li>
+    {{pass}}
+    </ul>
+    </div>-->
+ 
+            <div class="page-header">
+                <h1 id="appname">iiit tracker<h1>
+		</div>
+	
+
+   <div id="middle">
+	<div id="ml">
+		<img src="../../itws5/static/images/img.png" alt="screenshot" width="85%" height="80%" id="sample">
+	</div>
+	<div id="mr">
+		<h2 id="purpose">find anyone's current location and</br> your current schedule in seconds.</h2>
+		<h5>IIIT Tracker is a web app which helps you find anyone's location either he or she</br> be a student or a teacher. It lets you find your current schedule also. 
+		You can</br> also send messages to others. Its a user freindly app.</br></br>
+		We have kept it nice and simple.Hope you like it!!!</h5><br/><br/>
+		<div id="free"><input type="button" id="start" value="start tracking" onClick="window.location='/itws5/default/hello1';"></input>it's free!</div>
+	</div>
+</div>
+
+{{block right_sidebar}}
+
+
+{{end}}
