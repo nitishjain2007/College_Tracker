@@ -34,7 +34,11 @@ div.inline { display:inline; }
 	height:40%;
 	margin-left:30px;
 }
-
+#search
+{
+  background-image: url("../../itws5/static/images/locations.png");
+  width:80%;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -203,7 +207,9 @@ label {
   text-align: right;
   letter-spacing: 1px;
 }
-
+#map{
+  background-image: url("../../itws5/static/images/map1.png")
+}
 .forgot-password {
   padding-left: 100px;
   font-size: 13px;
@@ -498,37 +504,75 @@ window.addEventListener("load",main)
         </div>
         <br>
         <p id="showhide" style="font-weight:bold;font-style:italic;">click below to update your location-></p></br>
-        <div id="search">
-          <table>
+        <div id="search" style="border-radius:15px;">
+          <table style="margin-left:20px;">
             <form id="update" name="update" method="post">
               <tr>
-                <td>Place</td>
-                <td><input type="text" name="place"></td>
+                <br>
+                <td style="color:black;">Place</td>
+                <td><input type="text" name="place" style="color:black;"></td>
               </tr>
               <tr>
-                <td>from date</td>
-                <td><input type="text" id="datepicker1" name="fromdate"></td>
+                <td style="color:black;">from date</td>
+                <td><input type="text" id="datepicker1" name="fromdate" style="color:black;"></td>
               </tr>
               <tr>  
-                <td>from time</td>
-                <td><input type="text" name="fromtime">
-                  <font size="1" color="grey">format 13:00:00</font></td>
+                <td style="color:black;">from time</td>
+                <td><input type="text" name="fromtime" style="color:black;">
+                  <font size="1" color="black" >format 13:00:00</font></td>
                 </tr>
                 <tr>
-                  <td>to date</td>
-                  <td><input type="text" id="datepicker2" name="todate"></td>
+                  <td style="color:black;">to date</td>
+                  <td><input type="text" id="datepicker2" name="todate" style="color:black;"></td>
                 </tr>
                 <tr>
-                  <td>to time</td>
-                  <td><input type="text" name="totime">
-                    <font size="1" color="grey">format 13:00:00</font></td>
+                  <td style="color:black;">to time</td>
+                  <td><input type="text" name="totime" style="color:black;">
+                    <font size="1" color="black">format 13:00:00</font></td>
                 </tr>
                 <tr>
-                    <td><button name="update" type="submit" value="Update">Update</button></td>
+                    <td><button id="submitar" name="update" type="submit" value="Update" style="color:black;">Update</button></td>
             </form>
           </table>
+          <br>
         </div>
+	      <br>
               <button id="locationup" onclick="g()">show form</button>
+              
+
+
+                <br>
+                <h4 style="font-weight:bold;">Searching for someone?</h4>
+                <div id="searching">
+                  <table>
+                    <form id="search" name="search" method="post">
+                      <tr>
+                        <td>type in name for whom you are looking for -></td>
+                        <td><input type="text" id="getname" name="getname" onkeyup = "flash()"></td>
+                      </tr>
+                      <tr><td><input type="text" id="getusername" name="getusername" ></td></tr>
+                      <tr><td><button type="submit" name="search" value="search">Search</button></td></tr>
+                      
+                    </table>
+                  </form>
+                  <h3>Your Search Suggestions</h3><br/>
+                  <div id="options">
+                  </div>
+                  <a href="hello2"><button type="button" id="map">look in map your current location</button></a>
+                </div>
+                </td>
+              <!--</div>-->
+              <td>
+                <div id="imagediv"float="right"style="margin-right:0%;"><img class="profilepic" float="right" style="margin-right:0%;"src="{{=URL('default', 'download',args=check3)}}" height="300px" width="100%" style="z-index=-1;" -moz-border-radius: 40px 40px;></div>
+                <p></p>
+                <h4 style="font-weight:bold;">Change your Display Pic:</h4>
+                <form method="post" action="" enctype="multipart/form-data">
+                  <input type="hidden" name="_formname" value="image_form">
+                  <input class="upload" name="image_file" type="file">
+                  <input type="submit" value="Submit">
+                </form>
+              </div>
+              <br>
               <div id="messagetickr" style="width:400px;border-radius:5px;margin-left:13%;background-color:rgba(0,0,0,0.3);">
                 <h1 style="margin-left:29%;font-weight:bold;">MESSAGE TICKR</h1>
                 {{if len(check9) == 0:}}
@@ -550,39 +594,6 @@ window.addEventListener("load",main)
                 {{pass}}</div>
 {{pass}}
 
-
-
-
-                <h4 style="font-weight:bold;">Searching for someone?</h4>
-                <div id="searching">
-                  <table>
-                    <form id="search" name="search" method="post">
-                      <tr>
-                        <td>type in name for whom you are looking for -></td>
-                        <td><input type="text" id="getname" name="getname" onkeyup = "flash()"></td>
-                      </tr>
-                      <tr><td><input type="text" id="getusername" name="getusername" ></td></tr>
-                      <tr><td><button type="submit" name="search" value="search">Search</button></td></tr>
-                      
-                    </table>
-                  </form>
-                  <h3>Your Search Suggestions</h3><br/>
-                  <div id="options">
-                  </div>
-                  <a href="hello2"><button type="button">look in map your current location</button></a>
-                </div>
-                </td>
-              <!--</div>-->
-              <td>
-                <div id="imagediv"float="right"style="margin-right:0%;"><img class="profilepic" float="right" style="margin-right:0%;"src="{{=URL('default', 'download',args=check3)}}" height="300px" width="100%" style="z-index=-1;" -moz-border-radius: 40px 40px;></div>
-                <p></p>
-                <h4 style="font-weight:bold;">Change your Display Pic:</h4>
-                <form method="post" action="" enctype="multipart/form-data">
-                  <input type="hidden" name="_formname" value="image_form">
-                  <input class="upload" name="image_file" type="file">
-                  <input type="submit" value="Submit">
-                </form>
-              </div>
               </td>
             </tr>
           </table>
