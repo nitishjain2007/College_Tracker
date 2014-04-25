@@ -32,6 +32,9 @@ border-radius: 20px;
 	height:40%;
 	margin-left:30px;
 }
+#map1{
+  background-image: url("../../itws5/static/images/map1.png")
+}
 </style>
 <!-- Navbar ================================================== -->
   <div class="navbar navbar-inverse">
@@ -101,7 +104,7 @@ border-radius: 20px;
 <tr><td colspan="2"><button name="send" type="submit" value="Message" style="margin-left:45%">Send</button></td>
 </table>
 <form>
-<a href="hello2"><button type="button">look him on map</button></a>
+<a href="hello2"><button type="button" id="map1">look him on map</button></a>
 </td>
 <td>
 <div id="imagediv" float="left"><img class="profilepic" src="{{=URL('default', 'download',args=check8)}}" height="300px" width="375px" style="z-index=-1;" -moz-border-radius: 40px 40px;></div>

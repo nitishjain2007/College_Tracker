@@ -1,9 +1,7 @@
-<table>
+<h4>Click on one of them to get their info:-></h4>
 {{for i in range(0,len(names)):}}
-<tr>
-<td id="{{=names[i]}}" onclick="f('{{=names[i]}}')">{{=names[i]}}</td>
-<td>{{=designation[i]}}</td>
-<td id="{{=names[i]}}u">{{=username[i]}}</td>
-</tr>
+<div style="display:none;" id="{{=names[i]}}">{{=names[i]}}</div> 
+<div style="display:none;" id="{{=names[i]}}u">{{=username[i]}}</div> 
+<button id="{{=names[i]}}" onclick="f('{{=names[i]}}')" style="height:50px;width:200px;background-color:rgba(0,0,255,0.4);border-radius:10px;">{{=names[i]}} {{=designation[i]}} {{=username[i]}}</button>
 {{pass}}
-</table>
+

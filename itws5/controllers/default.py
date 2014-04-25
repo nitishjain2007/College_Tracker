@@ -52,7 +52,6 @@ def search():
         redirect(URL("hello1"))
 
 #for finding the information of the person
-
     rows4 = db(db.persons.username == session.queryname).select()
     #print rows4
     for i in rows4:
@@ -222,11 +221,8 @@ def hello1():
 		for i in rows1:
 			session.sec = i.sec
 		session.times = datetime.today().time()
-		#print session.times
-		#print session.sec
 		session.days = time.strftime("%A")	
 		rows2 = db(db[session.sec].dayn == session.days).select()
-		print rows2
 		rows3 = db(db.periods.id > 0).select()
 
 #for taking the current period of user
@@ -243,7 +239,6 @@ def hello1():
 			if session.var is not "-":
 				session.var = session.var.split()
 				session.period = session.var[0]
-				print session.period
 				l = len(session.var)
 				session.schedule = ""
 				for i in range(1,l):
@@ -288,7 +283,6 @@ def hello1():
             session.feedback = []
             for i in rows5:
 	        session.feedback.append(str(i.sendername) + "->sent a feedback: " + str(i.comments) )
-	    print session.feedback 
 
 #flash messages
 

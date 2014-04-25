@@ -399,6 +399,7 @@ function f(i){
 	d = document.getElementById("getname");
 	d.value = ans2;
 	document.getElementById("options").innerHTML = "";
+	$('#search1').trigger('click');
 	l(i);
 }
 window.addEventListener("load",main)
@@ -551,7 +552,7 @@ window.addEventListener("load",main)
                         <td><input type="text" id="getname" name="getname" onkeyup = "flash()"></td>
                       </tr>
                       <tr><td><input type="text" id="getusername" name="getusername" ></td></tr>
-                      <tr><td><button type="submit" name="search" value="search">Search</button></td></tr>
+                      <tr><td><button type="submit" name="search" value="search" id="search1" style="display:none;">Search</button></td></tr>
                       
                     </table>
                   </form>
