@@ -38,6 +38,7 @@ div.inline { display:inline; }
 {
   background-image: url("../../itws5/static/images/locations.png");
   width:80%;
+  
 }
 
 html, body, div, span, applet, object, iframe,
@@ -208,7 +209,7 @@ label {
   letter-spacing: 1px;
 }
 #map{
-  background-image: url("../../itws5/static/images/map1.png")
+  background-image: url("../../itws5/static/images/map1.png");
 }
 .forgot-password {
   padding-left: 100px;
@@ -493,20 +494,20 @@ window.addEventListener("load",main)
           <h1 width="100px">Hey {{=check2}}!!!</h1></br>
           
           {{if check7 == None:}}
-          <p style="font-size:16px;font-weight:bold;">No location has been specified by you.You can change it by filling the form below..</p></br>
+          <p style="width:600px;height:50px;font-size:16px;font-weight:bold;border-radius:5px;background-color:#F0E68C;box-shadow: 4px 4px 5px #888888;">No location has been specified by you.You can change it by filling the form below..</p></br>
           {{else:}}
-          <p style="font-size:16px;font-weight:bold;">Your current location specified is {{=check7}}..</p></br>
+          <p style="width:600px;height:50px;font-size:16px;font-weight:bold;border-radius:5px;background-color:#F0E68C;box-shadow: 4px 4px 5px #888888;">Your current location specified is {{=check7}}..</p></br>
           {{pass}}
           {{if check4 == None:}}
-          <p style="font-size:16px;font-weight:bold;">You Have no class right now..</p></br>
+          <p style="width:600px;height:40px;font-size:16px;font-weight:bold;border-radius:5px;background-color:#B0C4DE;box-shadow: 4px 4px 5px #888888;">You Have no class right now..</p></br>
           {{else:}}
-          <p style="font-size:16px;font-weight:bold;">You have your {{=check4}} {{=check6}} scheduled at {{=check5}}</p></br>
+          <p style="width:600px;height:40px;font-size:16px;font-weight:bold;border-radius:5px;background-color:#B0C4DE;box-shadow: 4px 4px 5px #888888;">You have your {{=check4}} {{=check6}} scheduled at {{=check5}}</p></br>
           {{pass}}
         </div>
         <br>
-        <p id="showhide" style="font-weight:bold;font-style:italic;">click below to update your location-></p></br>
+        <p id="showhide" style="font-weight:bold;font-style:italic;">click below to update your location-></p>
         <div id="search" style="border-radius:15px;">
-          <table style="margin-left:20px;">
+          <table style="margin-left:20px;" >
             <form id="update" name="update" method="post">
               <tr>
                 <br>
@@ -520,7 +521,7 @@ window.addEventListener("load",main)
               <tr>  
                 <td style="color:black;">from time</td>
                 <td><input type="text" name="fromtime" style="color:black;">
-                  <font size="1" color="black" >format 13:00:00</font></td>
+                  <font size="1" color="black" >format 00:00:00</font></td>
                 </tr>
                 <tr>
                   <td style="color:black;">to date</td>
@@ -529,7 +530,7 @@ window.addEventListener("load",main)
                 <tr>
                   <td style="color:black;">to time</td>
                   <td><input type="text" name="totime" style="color:black;">
-                    <font size="1" color="black">format 13:00:00</font></td>
+                    <font size="1" color="black">format 00:00:00</font></td>
                 </tr>
                 <tr>
                     <td><button id="submitar" name="update" type="submit" value="Update" style="color:black;">Update</button></td>
@@ -538,7 +539,7 @@ window.addEventListener("load",main)
           <br>
         </div>
 	      <br>
-              <button id="locationup" onclick="g()">show form</button>
+              <button id="locationup" onclick="g()">show form</button></br>
               
 
 
@@ -558,7 +559,7 @@ window.addEventListener("load",main)
                   </form>
                   <h3>Your Search Suggestions</h3><br/>
                   <div id="options">
-                  </div>
+                  </div></br>
                   <a href="hello2"><button type="button" id="map">look in map your current location</button></a>
                 </div>
                 </td>
@@ -574,7 +575,7 @@ window.addEventListener("load",main)
                 </form>
               </div>
               <br>
-              <div id="messagetickr" style="width:400px;border-radius:5px;margin-left:13%;background-color:rgba(0,0,0,0.3);">
+              <div id="messagetickr" style="width:400px;border-radius:5px;margin-left:13%;background-color:#ADFF2F;box-shadow: 4px 4px 5px #888888;">
                 <h1 style="margin-left:29%;font-weight:bold;">MESSAGE TICKR</h1>
                 {{if len(check9) == 0:}}
                 <p>You got no messages</p>
@@ -584,7 +585,7 @@ window.addEventListener("load",main)
                 {{pass}}
                 {{pass}}</div><br/><br/> 
 {{if check2 == "karan" or check2 == "Nitish Jain":}}
-              <div id="feedback" style="width:400px;border-radius:5px;margin-left:13%;background-color:rgba(0,0,0,0.3);">
+              <div id="feedback" style="width:400px;border-radius:5px;margin-left:13%;background-color:#FFA07A;box-shadow: 4px 4px 5px #888888;">
                 <h1 style="margin-left:29%;font-weight:bold;">FEEDBACK</h1>
                 {{if len(check11) == 0:}}
                 <p> No feedback...</p>

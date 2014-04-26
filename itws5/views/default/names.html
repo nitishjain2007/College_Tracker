@@ -1,7 +1,12 @@
+<style>
+.buttons: hover{
+	background:rgba(0,255,0,0.4);
+}
+</style>
 <h4>Click on one of them to get their info:-></h4>
 {{for i in range(0,len(names)):}}
 <div style="display:none;" id="{{=names[i]}}">{{=names[i]}}</div> 
 <div style="display:none;" id="{{=names[i]}}u">{{=username[i]}}</div> 
-<button id="{{=names[i]}}" onclick="f('{{=names[i]}}')" style="height:50px;width:200px;background-color:rgba(0,0,255,0.4);border-radius:10px;">{{=names[i]}} {{=designation[i]}} {{=username[i]}}</button>
+<button class="buttons" id="{{=names[i]}}" onclick="f('{{=names[i]}}')" style="height:50px;width:200px;background-color:rgba(0,0,255,0.4);border-radius:10px;">{{=names[i]}} {{=designation[i]}} {{=username[i]}}</button>
 {{pass}}
 
